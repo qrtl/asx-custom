@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Override existing access control lists to disable the create, update and delete permissions-->
+    <record id="sale.access_product_product_sale_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+    <record id="stock.access_product_product_stock_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+    <record id="purchase.access_product_product_purchase_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+    <record id="account.access_product_product_account_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+    <record id="sale.access_product_template_sale_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+    <record id="stock.access_product_template_stock_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+    <record id="purchase.access_product_template_purchase_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+    <record id="account.access_product_template_account_manager" model="ir.model.access">
+        <field name="perm_write">False</field>
+        <field name="perm_create">False</field>
+        <field name="perm_unlink">False</field>
+    </record>
+
+</odoo>

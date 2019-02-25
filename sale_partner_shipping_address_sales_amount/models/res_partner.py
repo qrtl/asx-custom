@@ -22,7 +22,7 @@ class ResPartner(models.Model):
                 ('state', 'in', ['sale', 'done'])
             ])
             for order in orders:
-                delivery_amount += order.amount_total
+                delivery_amount += order.amount_total / order.currency_rate
             partner.delivery_sales_amount = delivery_amount
 
     @api.multi

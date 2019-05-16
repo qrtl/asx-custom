@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cenit_schema_system,cenit.schema.system,model_cenit_schema,base.group_user,1,1,1,1
+access_cenit_data_type_system,cenit.data_type.system,model_cenit_data_type,base.group_user,1,1,1,1
+access_cenit_data_type_line_system,cenit.data_type.line.system,model_cenit_data_type_line,base.group_user,1,1,1,1
+access_cenit_connection_system,cenit.connection.system,model_cenit_connection,base.group_user,1,1,1,1
+access_cenit_operation_system,cenit.operation.system,model_cenit_operation,base.group_user,1,1,1,1
+access_cenit_resource_system,cenit.resource.system,model_cenit_resource,base.group_user,1,1,1,1
+access_cenit_webhook_system,cenit.webhook.system,model_cenit_webhook,base.group_user,1,1,1,1
+access_cenit_parameter_system,cenit.parameter.system,model_cenit_parameter,base.group_user,1,1,1,1
+access_cenit_connection_role_system,cenit.connection.role.system,model_cenit_connection_role,base.group_user,1,1,1,1
+access_cenit_event_system,cenit.event.system,model_cenit_event,base.group_user,1,1,1,1
+access_cenit_translator_system,cenit.translator.system,model_cenit_translator,base.group_user,1,1,1,1
+access_cenit_flow_system,cenit.flow.system,model_cenit_flow,base.group_user,1,1,1,1
+access_cenit_namespace_system,cenit.namespace.system,model_cenit_namespace,base.group_user,1,1,1,1
+access_cenit_data_type_domain_line_system,cenit.data_type.domain.line.system,model_cenit_data_type_domain_line,base.group_user,1,1,1,1
+access_cenit_data_type_trigger_system,cenit.data_type.trigger.system,model_cenit_data_type_trigger,base.group_user,1,1,1,1
+access_ir_config_parameter_system,base.model_ir_config_parameter,base.model_ir_config_parameter,base.group_user,1,0,0,0

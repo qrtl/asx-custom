@@ -17,5 +17,6 @@
         "reports/sale_order_report_templates.xml",
         "views/res_partner_views.xml",
         "views/sale_order_views.xml",
+        "views/sale_portal_templates.xml",
     ],
 }

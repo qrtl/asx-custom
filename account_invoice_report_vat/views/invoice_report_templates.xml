@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_invoice_document_inherit_sale" inherit_id="sale.report_invoice_document_inherit_sale">
+        <xpath expr="//div[@t-field='o.partner_shipping_id']" position="after">
+            <t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_shipping_id.vat"/>
+        </xpath>
+    </template>
+
+</odoo>

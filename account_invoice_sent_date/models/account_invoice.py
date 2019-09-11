@@ -7,7 +7,7 @@ from odoo import models, fields
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    send_date = fields.Date(
-        string='Send Date',
+    sent_date = fields.Datetime(
+        string='Sent Date',
         readonly=True,
     )

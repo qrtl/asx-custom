@@ -9,5 +9,4 @@ class AccountInvoice(models.Model):
 
     sent_date = fields.Datetime(
         string='Sent Date',
-        readonly=True,
     )

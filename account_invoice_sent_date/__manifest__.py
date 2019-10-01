@@ -3,7 +3,11 @@
 {
     "name": "Account Invoice Sent Date",
     "summary": "",
-    "version": "12.0.1.0.1",
+    'description': """
+This module adds the functionality to record the date invoice was sent by 
+email.
+    """,
+    "version": "12.0.1.1.0",
     "category": "Accounting",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",

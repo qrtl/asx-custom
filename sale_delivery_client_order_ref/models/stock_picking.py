@@ -8,6 +8,8 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     client_order_ref = fields.Char(
-        related='group_id.sale_id.client_order_ref',
+        related='sale_id.client_order_ref',
         string='Customer Reference',
+        store=True,
+        readonly=True,
     )

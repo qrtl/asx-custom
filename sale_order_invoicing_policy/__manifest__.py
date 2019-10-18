@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
@@ -14,7 +13,7 @@ This module allow user to change product's invoicing policy on sales order.
     "license": "AGPL-3",
     "installable": True,
     "depends": [
-        "sale_stock",
+        "sale",
     ],
     "data": [
         "views/sale_order_views.xml",

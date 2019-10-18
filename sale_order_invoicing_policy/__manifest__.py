@@ -5,7 +5,7 @@
     "name": "Sale Order Invoice Policy",
     "summary": "",
     "description": """
-This moudle allow user to change Invoicing Policy on sale order.
+This module allow user to change Invoicing Policy on sale order.
 """,
     "version": "12.0.1.0.0",
     "category": "Sale,

@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='team_id']" position="before">
-                <field name="sale_order_invoice_policy"/>
+                <field name="invoice_policy"/>
             </xpath>
         </field>
     </record>

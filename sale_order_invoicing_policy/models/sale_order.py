@@ -7,7 +7,7 @@ from odoo import models, fields, api
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    sale_order_invoice_policy = fields.Selection(
+    invoice_policy = fields.Selection(
         [('order', 'Ordered quantities'),
          ('delivery', 'Delivered quantities')],
         string='Invoicing Policy',

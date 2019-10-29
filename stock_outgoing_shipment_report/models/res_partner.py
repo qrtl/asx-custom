@@ -7,10 +7,8 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    delivery_carrier_id = fields.Many2one(
-        'delivery.carrier',
-        string='Delivery Carrier',
-    )
-    delivery_carrier_account_num = fields.Char(
-        string='Delivery Carrier Account Number',
+    delivery_carrier_account_ids = fields.One2many(
+        'delivery.carrier.account',
+        inverse_name='partner_id',
+        string='Delivery Carrier Account(s)',
     )

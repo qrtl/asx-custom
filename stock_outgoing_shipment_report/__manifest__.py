@@ -18,7 +18,6 @@
         "security/ir.model.access.csv",
         "views/delivery_carrier_views.xml",
         "views/delivery_carrier_service_views.xml",
-        "views/delivery_consignee_code_views.xml",
         "views/product_template_views.xml",
         "views/res_partner_views.xml",
         "views/sale_order_views.xml",

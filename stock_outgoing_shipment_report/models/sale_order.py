@@ -14,7 +14,3 @@ class SaleOrder(models.Model):
         'delivery.carrier.service',
         string='Delivery Service',
     )
-    delivery_consignee_code_id = fields.Many2one(
-        'delivery.consignee.code',
-        string='Consignee Code',
-    )

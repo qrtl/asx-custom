@@ -159,10 +159,8 @@ class stockOutgoingShipmentReport(models.TransientModel):
     ship_to_customer_no = fields.Char(
         string='ShipToCustomerNo',
     )
-    shipping_con_code = fields.Many2one(
-        related='move_id.sale_line_id.order_id.delivery_consignee_code_id',
+    shipping_con_code = fields.Char(
         string='ShippingConCode',
-        store=True,
     )
     includes_kit_items = fields.Selection(
         [('Y', 'Y'),
@@ -329,10 +327,14 @@ class stockOutgoingShipmentReport(models.TransientModel):
     @api.depends('carrier_id')
     def _get_shipping_use_carrier_acct(self):
         for line in self:
-            if line.carrier_id and line.move_id.picking_partner_id.delivery_carrier_id and \
-                    line.carrier_id == line.move_id.picking_partner_id.delivery_carrier_id:
+            if line.carrier_id and line.move_id.picking_partner_id. \
+                    delivery_carrier_account_ids.filtered(
+                        lambda l: l.carrier_id == line.carrier_id):
                 line.shipping_use_carrier_acct = \
-                    line.move_id.picking_partner_id.delivery_carrier_account_num
+                    line.move_id.picking_partner_id. \
+                    delivery_carrier_account_ids.filtered(
+                        lambda l: l.carrier_id == line.carrier_id). \
+                    delivery_carrier_account_num
             else:
                 line.shipping_use_carrier_acct = False
 

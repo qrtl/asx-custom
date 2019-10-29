@@ -8,8 +8,12 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='container_row_2']" position="inside">
                 <group string="Carrier Information" name="carrier_information">
-                    <field name="delivery_carrier_id"/>
-                    <field name="delivery_carrier_account_num"/>
+                    <field name="delivery_carrier_account_ids" mode="tree,kanban">
+                        <tree string="Sales Order Lines" editable="bottom">
+                            <field name="carrier_id"/>
+                            <field name="delivery_carrier_account_num"/>
+                        </tree>
+                    </field>
                 </group>
             </xpath>
         </field>

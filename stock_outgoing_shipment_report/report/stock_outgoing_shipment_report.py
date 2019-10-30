@@ -1,6 +1,7 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import re
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -14,9 +15,8 @@ class stockOutgoingShipmentReport(models.TransientModel):
         readonly=True,
     )
     carrier_id = fields.Many2one(
-        related='move_id.sale_line_id.order_id.carrier_id',
+        'delivery.carrier',
         string='Carrier',
-        store=True,
     )
     customer_order_no = fields.Char(
         related='move_id.picking_id.name',
@@ -28,24 +28,41 @@ class stockOutgoingShipmentReport(models.TransientModel):
         string='PONumber',
         store=True,
     )
-    po_date = fields.Datetime(
-        related='move_id.sale_line_id.order_id.date_order',
+    po_date = fields.Char(
         string='PODate',
+        compute='_compute_date_fields',
         store=True,
     )
-    ship_date = fields.Date(
-        string='ShipDate',
+    po_date_edit = fields.Date(
+        string='PODate (Edit Only)',
     )
-    ship_no_later = fields.Date(
+    ship_date = fields.Char(
+        string='ShipDate',
+        compute='_compute_date_fields',
+        store=True,
+    )
+    ship_date_edit = fields.Date(
+        string='PODate (Edit Only)',
+    )
+    ship_no_later = fields.Char(
         string='ShipNoLater',
+        compute='_compute_date_fields',
+        store=True,
+    )
+    ship_no_later_edit = fields.Date(
+        string='ShipNoLater (Edit Only)',
     )
     shipping_carrier = fields.Char(
         related='carrier_id.name',
         string='ShippingCarrier',
         store=True,
     )
+    shipping_service_id = fields.Many2one(
+        related='move_id.sale_line_id.order_id.delivery_carrier_service_id',
+        string='ShippingService',
+    )
     shipping_service = fields.Char(
-        related='move_id.sale_line_id.order_id.delivery_carrier_service_id.name',
+        related='shipping_service_id.name',
         string='ShippingService',
         store=True,
     )
@@ -56,44 +73,41 @@ class stockOutgoingShipmentReport(models.TransientModel):
         default='Y',
     )
     shipping_saturday_delivery = fields.Selection(
-        [('Y', 'Y'),
-         ('N', 'N')],
+        [('Y', 'Y')],
         string='ShippingSaturdayDelivery',
-        default='N',
+        default=False,
     )
     shipping_use_carrier_acct = fields.Char(
-        compute='_get_shipping_use_carrier_acct',
+        related='move_id.sale_line_id.order_id.shipping_use_carrier_acct',
         string='ShippingUseCarrierAcct',
         store=True,
-        readonly=False,
     )
     shipping_carrier_acct_type = fields.Char(
         string='ShippingCarrierAcctType',
     )
     shipping_insure_shipment = fields.Selection(
-        [('Y', 'Y'),
-         ('N', 'N')],
+        [('Y', 'Y')],
         string='ShippingInsureShipment',
-        default='N',
+        default=False,
     )
-    shipping_insurance_amount = fields.Float(
-        related='move_id.sale_line_id.order_id.shipping_insurance_amt',
+    shipping_insurance_amount = fields.Char(
         string='ShippingInsuranceAmount',
-        store=True,
+        readonly=True,
     )
     ship_from_dc = fields.Selection(
         [('TUAL', 'TUAL'),
          ('ATLA', 'ATLA')],
         string='ShipFromDC',
-        default='TUAL',
+        default=False,
     )
     ship_to_residential_indicator = fields.Selection(
-        [('Y', 'Y'),
-         ('N', 'N')],
+        [('Y', 'Y')],
         string='ShipToResidentialIndicator',
-        default='N',
+        compute='_get_ship_to_residential_indicator',
+        store=True,
+        readonly=False,
     )
-    shipping_charge = fields.Integer(
+    shipping_charge = fields.Char(
         string='ShippingCharge',
     )
     shipping_reference1 = fields.Char(
@@ -103,10 +117,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         string='ShippingReference2',
     )
     ship_to_first_name = fields.Char(
-        related='move_id.picking_partner_id.name',
         string='ShipToFirstName',
-        store=True,
-        readonly=False,
     )
     ship_to_last_name = fields.Char(
         string='ShipToLastName',
@@ -115,46 +126,25 @@ class stockOutgoingShipmentReport(models.TransientModel):
         string='ShipToCompany',
     )
     ship_to_address1 = fields.Char(
-        related='move_id.picking_partner_id.street',
         string='ShipToAddress1',
-        store=True,
-        readonly=False,
     )
     ship_to_address2 = fields.Char(
-        related='move_id.picking_partner_id.street2',
         string='ShipToAddress2',
-        store=True,
-        readonly=False,
     )
     ship_to_city = fields.Char(
-        related='move_id.picking_partner_id.city',
         string='ShipToCity',
-        store=True,
-        readonly=False,
     )
     ship_to_state = fields.Char(
-        related='move_id.picking_partner_id.state_id.code',
         string='ShipToState',
-        store=True,
-        readonly=False,
     )
     ship_to_country_code = fields.Char(
-        related='move_id.picking_partner_id.country_id.code',
         string='ShipToCountryCode',
-        store=True,
-        readonly=False,
     )
     ship_to_zip = fields.Char(
-        related='move_id.picking_partner_id.zip',
         string='ShipToZip',
-        store=True,
-        readonly=False,
     )
     ship_to_phone = fields.Char(
-        related='move_id.picking_partner_id.phone',
         string='ShipToPhone',
-        store=True,
-        readonly=False,
     )
     ship_to_customer_no = fields.Char(
         string='ShipToCustomerNo',
@@ -163,10 +153,9 @@ class stockOutgoingShipmentReport(models.TransientModel):
         string='ShippingConCode',
     )
     includes_kit_items = fields.Selection(
-        [('Y', 'Y'),
-         ('N', 'N')],
+        [('Y', 'Y')],
         string='IncludesKitItems',
-        default='N',
+        default=False,
     )
     sku = fields.Char(
         related='move_id.product_id.default_code',
@@ -179,10 +168,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         store=True,
     )
     description = fields.Char(
-        related='move_id.product_id.product_tmpl_id.delivery_report_desc',
         string='Description',
-        store=True,
-        readonly=False,
     )
     po_line_no = fields.Char(
         string='PoLineNo',
@@ -190,13 +176,13 @@ class stockOutgoingShipmentReport(models.TransientModel):
     item_no_ref = fields.Char(
         string='ItemNoRef',
     )
-    original_price = fields.Integer(
+    original_price = fields.Char(
         string='OriginalPrice',
     )
-    price = fields.Integer(
+    price = fields.Char(
         string='Price',
     )
-    discounted_price = fields.Integer(
+    discounted_price = fields.Char(
         string='DiscountedPrice',
     )
     sold_to_first_name = fields.Char(
@@ -242,7 +228,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         string='Lot',
     )
 
-    @api.constrains('ship_to_last_name', 'ship_to_company',
+    @api.constrains('ship_to_first_name', 'ship_to_last_name', 'ship_to_company',
                     'ship_to_address1', 'ship_to_address2', 'ship_to_city',
                     'ship_to_customer_no', 'description', 'po_line_no',
                     'item_no_ref', 'sold_to_first_name', 'sold_to_last_name',
@@ -253,6 +239,8 @@ class stockOutgoingShipmentReport(models.TransientModel):
         for rec in self:
             msg = _("%s should be at most %s digit(s).")
 
+            if rec.ship_to_first_name and len(rec.ship_to_first_name) > 30:
+                raise ValidationError(msg % (_("ShipToFirstName"), "30"))
             if rec.ship_to_last_name and len(rec.ship_to_last_name) > 30:
                 raise ValidationError(msg % (_("ShipToLastName"), "30"))
             if rec.ship_to_company and len(rec.ship_to_company) > 30:
@@ -323,27 +311,33 @@ class stockOutgoingShipmentReport(models.TransientModel):
                 if not country:
                     raise ValidationError(msg % (_("ShipToCountryCode")))
 
-    @api.multi
-    @api.depends('carrier_id')
-    def _get_shipping_use_carrier_acct(self):
-        for line in self:
-            if line.carrier_id and line.move_id.picking_partner_id. \
-                    delivery_carrier_account_ids.filtered(
-                        lambda l: l.carrier_id == line.carrier_id):
-                line.shipping_use_carrier_acct = \
-                    line.move_id.picking_partner_id. \
-                    delivery_carrier_account_ids.filtered(
-                        lambda l: l.carrier_id == line.carrier_id). \
-                    delivery_carrier_account_num
-            else:
-                line.shipping_use_carrier_acct = False
+    @api.constrains('shipping_charge')
+    def _validate_number_fields(self):
+        for rec in self:
+            msg = _("Only numbers are allowed for %s field.")
+            try:
+                int(rec.shipping_charge)
+            except:
+                try:
+                    float(rec.shipping_charge)
+                except:
+                    raise ValidationError(msg % _("ShippingCharge"))
 
     @api.multi
-    def write(self, vals):
-        res = super(stockOutgoingShipmentReport, self).write(vals)
-        if 'ship_to_first_name' in vals:
-            for rec in self:
-                if rec.ship_to_first_name and len(rec.ship_to_first_name) > 30:
-                    raise ValidationError(
-                        _("%s should be at most %s digit(s).") % (_("ShipToFirstName"), "30"))
-        return res
+    @api.depends('po_date_edit', 'ship_date_edit', 'ship_no_later_edit')
+    def _compute_date_fields(self):
+        for line in self:
+            if line.po_date_edit:
+                line.po_date = line.po_date_edit.strftime("%d/%m/%Y")
+            if line.ship_date_edit:
+                line.ship_date = line.ship_date_edit.strftime("%d/%m/%Y")
+            if line.ship_no_later_edit:
+                line.ship_no_later = line.ship_no_later_edit.strftime(
+                    "%d/%m/%Y")
+
+    @api.multi
+    @api.depends('shipping_service_id')
+    def _get_ship_to_residential_indicator(self):
+        for line in self:
+            if line.shipping_service_id and line.shipping_service_id.ship_to_residential_indicator:
+                line.ship_to_residential_indicator = 'Y'

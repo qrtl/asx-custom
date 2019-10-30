@@ -8,9 +8,12 @@
             <tree string="Stock Outgoing Shipment Report" editable="top">
                 <field name="customer_order_no"/>
                 <field name="po_number"/>
-                <field name="po_date" widget="date"/>
-                <field name="ship_date" widget="date"/>
-                <field name="ship_no_later" widget="date"/>
+                <field name="po_date" invisible="1"/>
+                <field name="po_date_edit" widget="date" string='PODate'/>
+                <field name="ship_date" invisible="1"/>
+                <field name="ship_date_edit" widget="date" string="ShipDate"/>
+                <field name="ship_no_later" invisible="1"/>
+                <field name="ship_no_later_edit" widget="date" string="ShipNoLater"/>
                 <field name="shipping_carrier"/>
                 <field name="shipping_service"/>
                 <field name="shipping_signature_requred"/>

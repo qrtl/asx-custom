@@ -9,6 +9,7 @@
                 <field name="carrier_id"/>
                 <field name="name"/>
                 <field name="description"/>
+                <field name="ship_to_residential_indicator"/>
                 <field name="mos"/>
             </tree>
         </field>

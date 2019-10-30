@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//div[@name='carrier_selection']" position="after">
                 <field name="delivery_carrier_service_id" domain="[('carrier_id', '=', carrier_id)]"/>
+                <field name="shipping_use_carrier_acct"/>
                 <field name="shipping_insurance_amt"/>
             </xpath>
         </field>

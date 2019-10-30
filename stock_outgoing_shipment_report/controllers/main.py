@@ -3,6 +3,7 @@
 
 import json
 from odoo.addons.web.controllers.main import CSVExport
+from odoo.addons.web.controllers.main import ExcelExport
 
 
 class CSVExportInherit(CSVExport):
@@ -18,3 +19,18 @@ class CSVExportInherit(CSVExport):
             params['fields'].pop(0)
             data = json.dumps(params)
         return super(CSVExportInherit, self).base(data, token)
+
+
+class ExcelExportInherit(ExcelExport):
+
+    # Override the base() method which is used to gather fields' values in the
+    # export Excel.
+    def base(self, data, token):
+        params = json.loads(data)
+        # When the stock.outgoing.shipment.report model is selected, remove
+        # the first element in the fields list which is the External ID by
+        # default.
+        if params['model'] == 'stock.outgoing.shipment.report':
+            params['fields'].pop(0)
+            data = json.dumps(params)
+        return super(ExcelExportInherit, self).base(data, token)

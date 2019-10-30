@@ -14,3 +14,15 @@ class SaleOrder(models.Model):
         'delivery.carrier.service',
         string='Delivery Service',
     )
+    shipping_use_carrier_acct = fields.Char(
+        string='Delivery Carrier Account Number',
+    )
+
+    @api.onchange('carrier_id')
+    def _onchange_carrier_id(self):
+        if self.carrier_id and self.partner_shipping_id.delivery_carrier_account_ids.filtered(
+                lambda l: l.carrier_id == self.carrier_id):
+            self.shipping_use_carrier_acct = self.partner_shipping_id.delivery_carrier_account_ids.filtered(
+                lambda l: l.carrier_id == self.carrier_id).delivery_carrier_account_num
+        else:
+            self.shipping_use_carrier_acct = False

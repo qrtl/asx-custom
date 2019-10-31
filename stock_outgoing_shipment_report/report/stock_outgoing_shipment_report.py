@@ -42,7 +42,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         store=True,
     )
     ship_date_edit = fields.Date(
-        string='PODate (Not For Export)',
+        string='ShipDate (Not For Export)',
     )
     ship_no_later = fields.Char(
         string='ShipNoLater',

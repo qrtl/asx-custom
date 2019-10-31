@@ -18,6 +18,7 @@ class StockPicking(models.Model):
                 'po_date_edit': move.sale_line_id and move.sale_line_id.order_id.date_order or False,
                 'shipping_carrier': move.sale_line_id and move.sale_line_id.order_id.carrier_id and move.sale_line_id.order_id.carrier_id.name or False,
                 'shipping_insurance_amount': move.sale_line_id and move.sale_line_id.order_id.shipping_insurance_amt and str(move.sale_line_id.order_id.shipping_insurance_amt) or False,
+                'shipping_reference1': move.picking_id.client_order_ref or False,
                 'ship_to_first_name': move.picking_partner_id.name[:30] if move.picking_partner_id and len(move.picking_partner_id.name) > 30 else move.picking_partner_id and move.picking_partner_id.name or False,
                 'ship_to_company': move.picking_partner_id.parent_id.name[:30] if move.picking_partner_id and move.picking_partner_id.parent_id and len(move.picking_partner_id.parent_id.name) > 30 else move.picking_partner_id and move.picking_partner_id.parent_id and move.picking_partner_id.parent_id.name or False,
                 'ship_to_address1': move.picking_partner_id.street[:30] if move.picking_partner_id and len(move.picking_partner_id.street or '') > 30 else move.picking_partner_id and move.picking_partner_id.street or False,

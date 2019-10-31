@@ -327,13 +327,14 @@ class stockOutgoingShipmentReport(models.TransientModel):
     @api.depends('po_date_edit', 'ship_date_edit', 'ship_no_later_edit')
     def _compute_date_fields(self):
         for line in self:
+            date_format = "%m/%d/%Y"
             if line.po_date_edit:
-                line.po_date = line.po_date_edit.strftime("%d/%m/%Y")
+                line.po_date = line.po_date_edit.strftime(date_format)
             if line.ship_date_edit:
-                line.ship_date = line.ship_date_edit.strftime("%d/%m/%Y")
+                line.ship_date = line.ship_date_edit.strftime(date_format)
             if line.ship_no_later_edit:
                 line.ship_no_later = line.ship_no_later_edit.strftime(
-                    "%d/%m/%Y")
+                    date_format)
 
     @api.multi
     @api.depends('shipping_service_id')

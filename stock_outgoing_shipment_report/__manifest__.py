@@ -11,7 +11,7 @@
     "installable": True,
     "depends": [
         "delivery",
-        "stock",
+        "sale_delivery_client_order_ref",
     ],
     "data": [
         "data/stock_outgoing_shipment_report_data.xml",

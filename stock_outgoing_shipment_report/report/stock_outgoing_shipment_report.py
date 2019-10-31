@@ -34,7 +34,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         store=True,
     )
     po_date_edit = fields.Date(
-        string='PODate (Edit Only)',
+        string='PODate (Not For Export)',
     )
     ship_date = fields.Char(
         string='ShipDate',
@@ -42,7 +42,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         store=True,
     )
     ship_date_edit = fields.Date(
-        string='PODate (Edit Only)',
+        string='PODate (Not For Export)',
     )
     ship_no_later = fields.Char(
         string='ShipNoLater',
@@ -50,7 +50,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         store=True,
     )
     ship_no_later_edit = fields.Date(
-        string='ShipNoLater (Edit Only)',
+        string='ShipNoLater (Not For Export)',
     )
     shipping_carrier = fields.Char(
         related='carrier_id.name',

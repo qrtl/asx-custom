@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* group_3pl
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-02 06:31+0000\n"
+"PO-Revision-Date: 2019-11-02 06:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: group_3pl
+#: model:res.groups,name:group_3pl.group_3pl
+msgid "3PL"
+msgstr "3PL"
+
+#. module: group_3pl
+#: model:ir.model.fields,field_description:group_3pl.field_stock_warehouse__user_ids
+msgid "3PL Users"
+msgstr "3PLユーザ"
+
+#. module: group_3pl
+#: model:ir.model,name:group_3pl.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "販売オーダ明細"
+
+#. module: group_3pl
+#: model:ir.model.fields,help:group_3pl.field_stock_warehouse__user_ids
+msgid "Set 3PL users who should be able to see picking records of this warehouse."
+msgstr "この倉庫の運送レコードにアクセスできる3PLユーザを設定してください。"
+
+#. module: group_3pl
+#: model:ir.model,name:group_3pl.model_stock_warehouse
+msgid "Warehouse"
+msgstr "倉庫"
+

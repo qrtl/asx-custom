@@ -19,6 +19,7 @@
         'security/stock_security.xml',
         'security/ir.model.access.csv',
         'views/stock_menu_views.xml',
+        'views/stock_warehouse_views.xml',
         'views/stock_picking_views.xml',
         'views/product_views.xml',
     ],

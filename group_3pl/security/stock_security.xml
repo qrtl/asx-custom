@@ -3,7 +3,6 @@
 
     <record id="group_3pl" model="res.groups">
         <field name="name">3PL</field>
-        <field name="category_id" ref="base.module_category_warehouse_management"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 

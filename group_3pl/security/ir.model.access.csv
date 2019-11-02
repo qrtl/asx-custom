@@ -1,0 +1,26 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_picking_3pl,stock.picking 3pl,stock.model_stock_picking,group_3pl.group_3pl,1,1,1,1
+access_stock_picking_type_3pl,stock.picking.type 3pl,stock.model_stock_picking_type,group_3pl.group_3pl,1,0,0,0
+access_stock_production_lot_3pl,stock.production.lot 3pl,stock.model_stock_production_lot,group_3pl.group_3pl,1,1,1,1
+access_stock_move_3pl,stock.move 3pl,stock.model_stock_move,group_3pl.group_3pl,1,1,1,0
+access_stock_inventory_3pl,stock.inventory 3pl,stock.model_stock_inventory,group_3pl.group_3pl,1,1,1,0
+access_stock_inventory_line_3pl,stock.inventory.line 3pl,stock.model_stock_inventory_line,group_3pl.group_3pl,1,1,1,0
+access_product_product_stock_3pl,product_product_stock_3pl,product.model_product_product,group_3pl.group_3pl,1,0,0,0
+access_product_template_stock_3pl,product.template stock 3pl,product.model_product_template,group_3pl.group_3pl,1,0,0,0
+access_stock_warehouse_orderpoint,stock.warehouse.orderpoint,stock.model_stock_warehouse_orderpoint,group_3pl.group_3pl,1,0,0,0
+access_stock_quant_3pl,stock.quant 3pl,stock.model_stock_quant,group_3pl.group_3pl,1,0,0,0
+access_stock_quant_package_stock_3pl,stock.quant.package stock 3pl,stock.model_stock_quant_package,group_3pl.group_3pl,1,1,1,1
+access_stock_package_level_stock_3pl,stock.package_level stock 3pl,stock.model_stock_package_level,group_3pl.group_3pl,1,1,1,1
+access_stock_rule_3pl,stock_rule 3pl,stock.model_stock_rule,group_3pl.group_3pl,1,0,0,0
+access_stock_move_line_3pl,stock.move.line 3pl,stock.model_stock_move_line,group_3pl.group_3pl,1,1,1,1
+access_stock_fixed_putaway_3pl,stock_fixed_putaway_strat 3pl,stock.model_stock_fixed_putaway_strat,group_3pl.group_3pl,1,0,0,0
+access_product_price_history_stock_3pl,prices.history stock 3pl,product.model_product_price_history,group_3pl.group_3pl,1,0,0,0
+access_barcode_nomenclature_stock_3pl,barcode.nomenclature.stock.3pl,barcodes.model_barcode_nomenclature,group_3pl.group_3pl,1,0,0,0
+access_barcode_rule_stock_3pl,barcode.rule.stock.3pl,barcodes.model_barcode_rule,group_3pl.group_3pl,1,0,0,0
+access_stock_forecast_3pl,report.stock.forecast.3pl,stock.model_report_stock_forecast,group_3pl.group_3pl,1,0,0,0
+access_stock_scrap_3pl,stock.scrap.3pl,stock.model_stock_scrap,group_3pl.group_3pl,1,1,1,0
+access_sale_order_stock_3pl,sale.order stock 3pl,sale_stock.model_sale_order,group_3pl.group_3pl,1,1,0,0
+access_sale_order_line_stock_3pl,sale.order.line stock 3pl,sale_stock.model_sale_order_line,group_3pl.group_3pl,1,1,0,0
+access_purchase_order_stock_3pl,purchase.order 3pl,purchase_stock.model_purchase_order,group_3pl.group_3pl,1,0,0,0
+access_purchase_order_line_stock_3pl,purchase.order.line 3pl,purchase_stock.model_purchase_order_line,group_3pl.group_3pl,1,0,0,0
+access_delivery_carrier_stock_3pl,delivery.carrier stock_3pl,delivery.model_delivery_carrier,group_3pl.group_3pl,1,0,0,0

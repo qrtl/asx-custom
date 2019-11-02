@@ -22,5 +22,6 @@
         'views/stock_warehouse_views.xml',
         'views/stock_picking_views.xml',
         'views/product_views.xml',
+        'views/res_partner_views.xml',
     ],
 }

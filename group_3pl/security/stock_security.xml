@@ -7,8 +7,6 @@
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
-<data noupdate="1">
-
     <record id="stock_picking_3pl_rule" model="ir.rule">
         <field name="name">3PL Pickings</field>
         <field ref="stock.model_stock_picking" name="model_id"/>
@@ -23,5 +21,4 @@
         <field name="groups" eval="[(4, ref('group_3pl.group_3pl'))]"/>
     </record>
 
-</data>
 </odoo>

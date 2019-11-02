@@ -9,6 +9,23 @@
         <field name="groups_id" eval="[(4,ref('group_3pl.group_3pl'))]"/>
     </record>
 
+    <!-- make menu items invisible to 3pl users -->
+    <record model="ir.ui.menu" id="stock.menu_action_inventory_form">
+        <field name="groups_id" eval="[(4,ref('stock.group_stock_user'))]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="stock.menu_stock_scrap">
+        <field name="groups_id" eval="[(4,ref('stock.group_stock_user'))]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="stock.menu_procurement_compute">
+        <field name="groups_id" eval="[(4,ref('stock.group_stock_user'))]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="stock.menu_reordering_rules_config">
+        <field name="groups_id" eval="[(4,ref('stock.group_stock_user'))]"/>
+    </record>
+
     <!-- make menu items invisible to users without certain groups -->
     <record model="ir.ui.menu" id="calendar.mail_menu_calendar">
         <field name="groups_id" eval="[(6,0,[ref('stock.group_stock_user'),ref('sales_team.group_sale_salesman'),ref('purchase.group_purchase_user')])]"/>

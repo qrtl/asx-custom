@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//group[2]' position="after">
+                <group>
+                    <label for="evidence_status" string="Evidence Status"/>
+                    <div>
+                        <field name="evidence_status"/>
+                        <div>
+                            <field name="evidence_text"/>
+                        </div>
+                    </div>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='notes']" position="after">
+                <field name="memo" class="oe_inline" placeholder="Internal Memo..."/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_tree" model="ir.ui.view">
+        <field name="name">purchase.order.tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="memo"/>
+                <field name="evidence_status"/>
+                <field name="evidence_text"/>
+                <field name="message_attachment_count"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

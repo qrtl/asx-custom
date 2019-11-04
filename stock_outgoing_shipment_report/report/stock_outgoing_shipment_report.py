@@ -58,7 +58,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
         store=True,
     )
     shipping_service_id = fields.Many2one(
-        related='move_id.sale_line_id.order_id.delivery_carrier_service_id',
+        'delivery.carrier.service',
         string='ShippingService',
     )
     shipping_service = fields.Char(
@@ -78,7 +78,6 @@ class stockOutgoingShipmentReport(models.TransientModel):
         default=False,
     )
     shipping_use_carrier_acct = fields.Char(
-        related='move_id.sale_line_id.order_id.shipping_use_carrier_acct',
         string='ShippingUseCarrierAcct',
         store=True,
     )

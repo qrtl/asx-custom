@@ -15,6 +15,8 @@ class StockPicking(models.Model):
             vals = {
                 'move_id': move.id,
                 'carrier_id': move.sale_line_id and move.sale_line_id.order_id.carrier_id and move.sale_line_id.order_id.carrier_id.id or False,
+                'shipping_service_id': move.sale_line_id and move.sale_line_id.order_id.delivery_carrier_service_id and move.sale_line_id.order_id.delivery_carrier_service_id.id or False,
+                'shipping_use_carrier_acct': move.sale_line_id and move.sale_line_id.order_id.shipping_use_carrier_acct and move.sale_line_id.order_id.shipping_use_carrier_acct.id or False,
                 'po_date_edit': move.sale_line_id and move.sale_line_id.order_id.date_order or False,
                 'shipping_carrier': move.sale_line_id and move.sale_line_id.order_id.carrier_id and move.sale_line_id.order_id.carrier_id.name or False,
                 'shipping_insurance_amount': move.sale_line_id and move.sale_line_id.order_id.shipping_insurance_amt and str(move.sale_line_id.order_id.shipping_insurance_amt) or False,

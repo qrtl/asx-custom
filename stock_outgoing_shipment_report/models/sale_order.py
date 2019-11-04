@@ -26,3 +26,15 @@ class SaleOrder(models.Model):
                 lambda l: l.carrier_id == self.carrier_id).delivery_carrier_account_num
         else:
             self.shipping_use_carrier_acct = False
+
+    @api.multi
+    def write(self, vals):
+        res = super(SaleOrder, self).write(vals)
+        if 'carrier_id' in vals:
+            for order in self:
+                pickings = order.mapped('picking_ids').filtered(
+                    lambda p: p.state not in ('done', 'cancel'))
+                pickings.update({
+                    'carrier_id': vals['carrier_id']
+                })
+        return res

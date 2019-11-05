@@ -6,12 +6,12 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
-             <xpath expr="//field[@name='origin']" position="after">
-                <label for="evidence_status" string="Evidence Status"/>
+            <xpath expr="//field[@name='origin']" position="after">
+                <label for="evidence_status" string="Evidence Status" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
                 <div>
-                    <field name="evidence_status"/>
+                    <field name="evidence_status" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
                     <div>
-                        <field name="evidence_text"/>
+                        <field name="evidence_text" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
                     </div>
                 </div>
             </xpath>

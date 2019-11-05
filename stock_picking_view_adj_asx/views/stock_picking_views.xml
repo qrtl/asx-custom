@@ -26,7 +26,8 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="evidence_status"/>
                 <field name="evidence_text"/>
-                <field name="message_attachment_count"/>
+                <field name="message_attachment_count" string="Attachments"/>
+                <button name="action_get_attachment_view" string="View Attachments" type="object" icon="fa-paperclip"/>
             </xpath>
         </field>
     </record>

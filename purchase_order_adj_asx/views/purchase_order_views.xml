@@ -30,7 +30,7 @@
                 <field name="memo"/>
                 <field name="evidence_status"/>
                 <field name="evidence_text"/>
-                <field name="message_attachment_count" string="Attachments"/>
+                <field name="message_attachment_count" string=" "/>
                 <button name="action_get_attachment_view" string="View Attachments" type="object" icon="fa-paperclip"/>
             </xpath>
         </field>

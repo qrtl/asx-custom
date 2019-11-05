@@ -13,7 +13,7 @@ class PurchaseOrder(models.Model):
    ], string="Evidence Status", default='')
     
    evidence_text = fields.Char()
-   memo = fields.Text(string="Memo")
+   memo = fields.Text()
 
    @api.multi
    def action_get_attachment_view(self):

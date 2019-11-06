@@ -16,7 +16,12 @@
                 </div>
             </xpath>
             <xpath expr="//field[@name='notes']" position="after">
-                <field name="memo" class="oe_inline" placeholder="Internal Memo..."/>
+                <div>
+                    <label for="memo" string="Memo"/>
+                    <div>
+                        <field name="memo" class="oe_inline" placeholder="Internal Memo..."/>
+                    </div>
+                </div>
             </xpath>
         </field>
     </record>

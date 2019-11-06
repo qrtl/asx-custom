@@ -10,7 +10,7 @@ class StockPicking(models.Model):
     evidence_status = fields.Selection([
             ('more', 'Need More'),
             ('done', 'Done'),
-    ], string="Evidence Status", default='')
+    ], string="Evidence Status")
 
     evidence_text = fields.Char()
     

@@ -1,0 +1,57 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* purchase_order_adj_asx
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-06 03:13+0000\n"
+"PO-Revision-Date: 2019-11-06 03:13+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_order_adj_asx
+#: selection:purchase.order,evidence_status:0
+msgid "Done"
+msgstr "済"
+
+#. module: purchase_order_adj_asx
+#: model:ir.model.fields,field_description:purchase_order_adj_asx.field_purchase_order__evidence_status
+#: model_terms:ir.ui.view,arch_db:purchase_order_adj_asx.purchase_order_form
+msgid "Evidence Status"
+msgstr "証憑ステータス"
+
+#. module: purchase_order_adj_asx
+#: model:ir.model.fields,field_description:purchase_order_adj_asx.field_purchase_order__evidence_text
+msgid "Evidence Text"
+msgstr "証憑テキスト"
+
+#. module: purchase_order_adj_asx
+#: model_terms:ir.ui.view,arch_db:purchase_order_adj_asx.purchase_order_form
+msgid "Internal Memo..."
+msgstr "内部メモ..."
+
+#. module: purchase_order_adj_asx
+#: model:ir.model.fields,field_description:purchase_order_adj_asx.field_purchase_order__memo
+msgid "Memo"
+msgstr "メモ"
+
+#. module: purchase_order_adj_asx
+#: selection:purchase.order,evidence_status:0
+msgid "Need More"
+msgstr "要追加"
+
+#. module: purchase_order_adj_asx
+#: model:ir.model,name:purchase_order_adj_asx.model_purchase_order
+msgid "Purchase Order"
+msgstr "購買オーダ"
+
+#. module: purchase_order_adj_asx
+#: model_terms:ir.ui.view,arch_db:purchase_order_adj_asx.purchase_order_tree
+msgid "View Attachments"
+msgstr "添付照会"

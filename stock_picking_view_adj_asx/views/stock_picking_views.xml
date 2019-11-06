@@ -7,11 +7,11 @@
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='origin']" position="after">
-                <label for="evidence_status" string="Evidence Status" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                <label for="evidence_status" string="Evidence Status" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
                 <div>
-                    <field name="evidence_status" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                    <field name="evidence_status" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
                     <div>
-                        <field name="evidence_text" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                        <field name="evidence_text" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
                     </div>
                 </div>
             </xpath>

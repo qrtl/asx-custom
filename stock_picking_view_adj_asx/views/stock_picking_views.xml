@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <label for="evidence_status" string="Evidence Status" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                <div>
+                    <field name="evidence_status" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                    <div>
+                        <field name="evidence_text" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="vpicktree" model="ir.ui.view">
+        <field name="name">stock.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="evidence_status"/>
+                <field name="evidence_text"/>
+                <field name="message_attachment_count" string=" "/>
+                <button name="action_get_attachment_view" string="View Attachments" type="object" icon="fa-paperclip"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_delivery_document" inherit_id="stock.report_delivery_document">
+        <xpath expr='//h2' position="before">
+            <h3>Delivery Slip</h3>
+        </xpath>
+    </template>
+
+</odoo>

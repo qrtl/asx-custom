@@ -20,6 +20,7 @@ the picking records of the warehouse.
         'purchase_stock',
         'contacts',
         'calendar',
+        'stock_outgoing_shipment_report',
     ],
     'data': [
         'security/stock_security.xml',

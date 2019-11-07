@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stock_incoming_shipment_report_wizard" model="ir.ui.view">
+        <field name="name">stock.incoming.shipment.report.wizard</field>
+        <field name="model">stock.incoming.shipment.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Incoming Shipment Data">
+                <group name="report_option">
+                    <field name="date_expected"/>
+                </group>
+                <footer>
+                    <button name="generate_stock_incoming_shipment_report_action"
+                            string="Generate" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

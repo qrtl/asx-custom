@@ -14,4 +14,4 @@ class SaleOrder(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         if self.partner_id:
-            self.additional_info = self.partner_id.additional_info
+            self.additional_info = self.partner_id.sale_additional_info

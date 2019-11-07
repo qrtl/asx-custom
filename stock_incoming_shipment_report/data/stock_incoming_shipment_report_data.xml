@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.server" id="action_generate_stock_incoming_shipment_report">
+        <field name="name">Generate Incoming Shipment Data</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    action = records.open_stock_incoming_shipment_report_wizard()
+        </field>
+    </record>
+
+</odoo>

@@ -14,7 +14,7 @@ class StockIncomingShipmentReportWizard(models.TransientModel):
         self.ensure_one()
         picking_ids = self.env.context.get('picking_ids', [])
         moves = self.env['stock.picking'].browse(
-            picking_ids).mapped('move_lines').filtered(lambda l: l.date_expected <= self.date_expected)
+            picking_ids).mapped('move_lines').filtered(lambda l: l.date_expected >= self.date_expected)
         self._cr.execute("DELETE FROM stock_incoming_shipment_report")
         for move in moves:
             vals = {

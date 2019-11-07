@@ -62,7 +62,7 @@ class StockIncomingShipmentReport(models.TransientModel):
         string='Expiration Date (Not for Export)',
     )
     quantity_expected = fields.Float(
-        related='move_id.quantity_done',
+        related='move_id.product_uom_qty',
         string='Quantity Expected (EA)',
         store=True,
     )

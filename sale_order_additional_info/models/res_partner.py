@@ -7,8 +7,9 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    additional_info = fields.Char(
+    sale_additional_info = fields.Char(
         string='Additional Information',
         help='This field will be proposed to sales order.',
+        oldname="additional_info",
         copy=False,
     )

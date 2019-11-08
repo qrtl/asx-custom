@@ -36,11 +36,10 @@ msgstr "連絡先"
 #. module: sale_order_additional_info
 #: model:ir.model,name:sale_order_additional_info.model_sale_order
 msgid "Sale Order"
-msgstr ""
+msgstr "販売オーダ"
 
 #. module: sale_order_additional_info
 #: model:ir.model.fields,help:sale_order_additional_info.field_res_partner__sale_additional_info
 #: model:ir.model.fields,help:sale_order_additional_info.field_res_users__sale_additional_info
 msgid "This field will be proposed to sales order."
-msgstr "この項目が販売見積に提案されます。"
-
+msgstr "この項目の値は販売オーダに提案されます。"

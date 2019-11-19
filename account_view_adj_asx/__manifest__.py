@@ -3,7 +3,7 @@
 {
     "name": "Accounting Views Adjustments",
     "summary": "",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.1.0",
     "category": "Accounting",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
@@ -14,5 +14,6 @@
     ],
     "data": [
         "views/account_invoice_views.xml",
+        "views/account_payment_view.xml",
     ],
 }

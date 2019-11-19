@@ -1,7 +1,7 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    "name": "Adjustment on Sale Order Tree View",
+    "name": "Sale Order Adjustment",
     "summary": "",
     "version": "12.0.1.0.0",
     "category": "Sales",

@@ -1,5 +1,5 @@
 # Add OCA module in the exclude param, extend it with "|$MODULE"
-exclude: "^setup/|/static/lib/|/static/src/lib/|account_financial_report/|base_technical_features/|bi_sql_editor/|date_range/|partner_statement/|report_xlsx/|sale_automatic_workflow/|sql_request_abstract/|web_environment_ribbon/|web_favicon/"
+exclude: "^setup/|/static/lib/|/static/src/lib/|account_financial_report/|base_technical_features/|bi_sql_editor/|date_range/|partner_statement/|report_xlsx/|sale_automatic_workflow/|sql_request_abstract/|web_environment_ribbon/|web_favicon/|account_financial_risk/|sale_financial_risk/"
 default_language_version:
   python: python3
 repos:

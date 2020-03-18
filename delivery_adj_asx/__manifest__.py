@@ -3,13 +3,11 @@
 {
     "name": "Delivery Functions Adjustments",
     "summary": "",
-    'version': '12.0.1.1.0',
+    "version": "12.0.1.1.0",
     "category": "Stock",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": [
-        "delivery",
-    ],
+    "depends": ["delivery",],
 }

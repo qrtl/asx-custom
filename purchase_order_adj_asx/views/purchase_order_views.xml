@@ -1,44 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="purchase_order_form" model="ir.ui.view">
         <field name="name">purchase.order.form</field>
         <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='origin']" position="after">
-                <label for="evidence_status" string="Evidence Status"/>
+                <label for="evidence_status" string="Evidence Status" />
                 <div>
-                    <field name="evidence_status"/>
+                    <field name="evidence_status" />
                     <div>
-                        <field name="evidence_text"/>
+                        <field name="evidence_text" />
                     </div>
                 </div>
             </xpath>
             <xpath expr="//field[@name='notes']" position="after">
                 <div>
-                    <label for="memo" string="Memo"/>
+                    <label for="memo" string="Memo" />
                     <div>
-                        <field name="memo" class="oe_inline" placeholder="Internal Memo..."/>
+                        <field
+                            name="memo"
+                            class="oe_inline"
+                            placeholder="Internal Memo..."
+                        />
                     </div>
                 </div>
             </xpath>
         </field>
     </record>
-
     <record id="purchase_order_tree" model="ir.ui.view">
         <field name="name">purchase.order.tree</field>
         <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='origin']" position="after">
-                <field name="memo"/>
-                <field name="evidence_status"/>
-                <field name="evidence_text"/>
-                <field name="message_attachment_count" string=" "/>
-                <button name="action_get_attachment_view" string="View Attachments" type="object" icon="fa-paperclip"/>
+                <field name="memo" />
+                <field name="evidence_status" />
+                <field name="evidence_text" />
+                <field name="message_attachment_count" string=" " />
+                <button
+                    name="action_get_attachment_view"
+                    string="View Attachments"
+                    type="object"
+                    icon="fa-paperclip"
+                />
             </xpath>
         </field>
     </record>
-
 </odoo>

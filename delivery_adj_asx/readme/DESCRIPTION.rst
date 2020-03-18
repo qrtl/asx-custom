@@ -1,3 +1,2 @@
  - Avoid create the delivery charge line in sales order for free shipping.
  - Add Sale Order Salesperon as outgoing shipment's follower while confirmation.
- 

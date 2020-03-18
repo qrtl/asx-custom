@@ -9,6 +9,6 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["purchase_stock",],
-    "data": ["views/purchase_order_views.xml",],
+    "depends": ["purchase_stock"],
+    "data": ["views/purchase_order_views.xml"],
 }

@@ -8,7 +8,7 @@ class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
     evidence_status = fields.Selection(
-        [("more", "Need More"), ("done", "Done"),], string="Evidence Status"
+        [("more", "Need More"), ("done", "Done")], string="Evidence Status"
     )
 
     evidence_text = fields.Char()

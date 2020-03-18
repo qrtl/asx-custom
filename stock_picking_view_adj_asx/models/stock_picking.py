@@ -8,7 +8,7 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     evidence_status = fields.Selection(
-        [("more", "Need More"), ("done", "Done"),], string="Evidence Status"
+        [("more", "Need More"), ("done", "Done")], string="Evidence Status"
     )
 
     evidence_text = fields.Char()

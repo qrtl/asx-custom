@@ -9,5 +9,5 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["delivery",],
+    "depends": ["delivery"],
 }

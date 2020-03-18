@@ -9,7 +9,7 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["delivery",],
+    "depends": ["delivery"],
     "data": [
         "data/stock_incoming_shipment_report_data.xml",
         "security/ir.model.access.csv",

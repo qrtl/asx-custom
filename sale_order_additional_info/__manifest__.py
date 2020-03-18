@@ -9,7 +9,7 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["delivery", "sale",],
+    "depends": ["delivery", "sale"],
     "data": [
         "reports/sale_order_report_templates.xml",
         "views/res_partner_views.xml",

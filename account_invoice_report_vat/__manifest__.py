@@ -9,6 +9,6 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["sale",],
-    "data": ["views/invoice_report_templates.xml",],
+    "depends": ["sale"],
+    "data": ["views/invoice_report_templates.xml"],
 }

@@ -9,6 +9,6 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["purchase", "sale", "stock", "account",],
-    "data": ["security/ir_model_access.xml",],
+    "depends": ["purchase", "sale", "stock", "account"],
+    "data": ["security/ir_model_access.xml"],
 }

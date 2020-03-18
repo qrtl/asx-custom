@@ -1,13 +1,11 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import re
-
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
-class stockOutgoingShipmentReport(models.TransientModel):
+class StockOutgoingShipmentReport(models.TransientModel):
     _name = "stock.outgoing.shipment.report"
 
     move_id = fields.Many2one("stock.move", string="Stock Move", readonly=True,)
@@ -59,7 +57,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
     ship_to_residential_indicator = fields.Selection(
         [("Y", "Y")],
         string="ShipToResidentialIndicator",
-        compute="_get_ship_to_residential_indicator",
+        compute="_compute_ship_to_residential_indicator",
         store=True,
         readonly=False,
     )
@@ -210,10 +208,10 @@ class stockOutgoingShipmentReport(models.TransientModel):
             msg = _("Only numbers are allowed for %s field.")
             try:
                 int(rec.shipping_charge)
-            except:
+            except Exception as e:
                 try:
                     float(rec.shipping_charge)
-                except:
+                except Exception as e:
                     raise ValidationError(msg % _("ShippingCharge"))
 
     @api.multi
@@ -230,7 +228,7 @@ class stockOutgoingShipmentReport(models.TransientModel):
 
     @api.multi
     @api.depends("shipping_service_id")
-    def _get_ship_to_residential_indicator(self):
+    def _compute_ship_to_residential_indicator(self):
         for line in self:
             if (
                 line.shipping_service_id

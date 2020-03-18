@@ -3,10 +3,6 @@
 {
     "name": "Delivery Functions Adjustments",
     "summary": "",
-    "description": """
- - Avoid create the delivery charge line in sales order for free shipping.
- - Add Sale Order Salesperon as outgoing shipment's follower while confirmation.
-    """,
     'version': '12.0.1.1.0',
     "category": "Stock",
     "website": "https://www.quartile.co/",

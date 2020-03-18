@@ -7,7 +7,6 @@
     'website': 'https://www.quartile.co',
     'category': 'Security',
     'license': "AGPL-3",
-    'description': "",
     'depends': [
         'sale',
     ],

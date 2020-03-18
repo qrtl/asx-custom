@@ -18,11 +18,15 @@ exclude: |
   auditlog/|
   base_technical_features/|
   bi_sql_editor/|
+  cenit_base/|
+  cenit_shipstation/|
   date_range/|
-  group_3pl/|
   partner_statement/|
   report_xlsx/|
   sale_automatic_workflow/|
+  sale_financial_risk/|
+  sale_margin_delivered/|
+  sale_margin_security/|
   sql_request_abstract/|
   web_environment_ribbon/|
   web_favicon/

@@ -3,9 +3,6 @@
 {
     "name": "Account Invoice Report VAT",
     "summary": "",
-    "description": """
-Shows ship-to party's VAT number in printed invoice. 
-    """,
     "version": "12.0.1.0.0",
     "category": "Accounting",
     "website": "https://www.quartile.co/",

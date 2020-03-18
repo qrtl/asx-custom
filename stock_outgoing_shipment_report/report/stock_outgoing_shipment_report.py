@@ -128,48 +128,30 @@ class StockOutgoingShipmentReport(models.TransientModel):
     def _validate_field_length(self):
         for rec in self:
             msg = _("%s should be at most %s digit(s).")
-
-            if rec.ship_to_first_name and len(rec.ship_to_first_name) > 30:
-                raise ValidationError(msg % (_("ShipToFirstName"), "30"))
-            if rec.ship_to_last_name and len(rec.ship_to_last_name) > 30:
-                raise ValidationError(msg % (_("ShipToLastName"), "30"))
-            if rec.ship_to_company and len(rec.ship_to_company) > 30:
-                raise ValidationError(msg % (_("ShipToCompany"), "30"))
-            if rec.ship_to_address1 and len(rec.ship_to_address1) > 30:
-                raise ValidationError(msg % (_("ShipToAddress1"), "30"))
-            if rec.ship_to_address2 and len(rec.ship_to_address2) > 30:
-                raise ValidationError(msg % (_("ShipToAddress2"), "30"))
-            if rec.ship_to_city and len(rec.ship_to_city) > 30:
-                raise ValidationError(msg % (_("ShipToCity"), "30"))
-            if rec.ship_to_customer_no and len(rec.ship_to_customer_no) > 20:
-                raise ValidationError(msg % (_("ShipToCustomerNo"), "20"))
-
-            if rec.description and len(rec.description) > 40:
-                raise ValidationError(msg % (_("Description"), "40"))
-            if rec.po_line_no and len(rec.po_line_no) > 3:
-                raise ValidationError(msg % (_("PoLineNo"), "3"))
-            if rec.item_no_ref and len(rec.item_no_ref) > 20:
-                raise ValidationError(msg % (_("ItemNoRef"), "20"))
-
-            if rec.sold_to_first_name and len(rec.sold_to_first_name) > 30:
-                raise ValidationError(msg % (_("SoldToFirstName"), "30"))
-            if rec.sold_to_last_name and len(rec.sold_to_last_name) > 30:
-                raise ValidationError(msg % (_("SoldToLastName"), "30"))
-            if rec.sold_to_company and len(rec.sold_to_company) > 30:
-                raise ValidationError(msg % (_("SoldToCompany"), "30"))
-            if rec.sold_to_address1 and len(rec.sold_to_address1) > 30:
-                raise ValidationError(msg % (_("SoldToAddress1"), "30"))
-            if rec.sold_to_address2 and len(rec.sold_to_address2) > 30:
-                raise ValidationError(msg % (_("SoldToAddress2"), "30"))
-            if rec.sold_to_city and len(rec.sold_to_city) > 30:
-                raise ValidationError(msg % (_("SoldToCity"), "30"))
-            if rec.sold_to_customer_no and len(rec.sold_to_customer_no) > 20:
-                raise ValidationError(msg % (_("SoldToCustomerNo"), "20"))
-
-            if rec.order_note and len(rec.order_note) > 320:
-                raise ValidationError(msg % (_("OrderNote"), "320"))
-            if rec.gift_message and len(rec.gift_message) > 250:
-                raise ValidationError(msg % (_("Gift Message"), "250"))
+            fields_list = {
+                "ship_to_first_name": ["ShipToFirstName", 30],
+                "ship_to_last_name": ["ShipToLastName", 30],
+                "ship_to_company": ["ShipToCompany", 30],
+                "ship_to_address1": ["ShipToAddress1", 30],
+                "ship_to_address2": ["ShipToAddress2", 30],
+                "ship_to_city": ["ShipToCity", 30],
+                "ship_to_customer_no": ["ShipToCustomerNo", 20],
+                "description": ["Description", 40],
+                "po_line_no": ["PoLineNo", 3],
+                "item_no_ref": ["ItemNoRef", 20],
+                "sold_to_first_name": ["SoldToFirstName", 30],
+                "sold_to_last_name": ["SoldToLastName", 30],
+                "sold_to_company": ["SoldToCompany", 30],
+                "sold_to_address1": ["SoldToAddress1", 30],
+                "sold_to_address2": ["SoldToAddress2", 30],
+                "sold_to_city": ["SoldToCity", 30],
+                "sold_to_customer_no": ["SoldToCustomerNo", 20],
+                "order_note": ["OrderNote", 320],
+                "gift_message": ["Gift Message", 250],
+            }
+            for field_name, values in fields_list:
+                if rec[field_name] and len(rec[field_name]) > values[1]:
+                    raise ValidationError(msg % (_(values[0]), values[1]))
 
     @api.constrains(
         "ship_to_state", "ship_to_country_code", "sold_to_state", "sold_to_country_code"
@@ -208,10 +190,10 @@ class StockOutgoingShipmentReport(models.TransientModel):
             msg = _("Only numbers are allowed for %s field.")
             try:
                 int(rec.shipping_charge)
-            except Exception as e:
+            except Exception:
                 try:
                     float(rec.shipping_charge)
-                except Exception as e:
+                except Exception:
                     raise ValidationError(msg % _("ShippingCharge"))
 
     @api.multi

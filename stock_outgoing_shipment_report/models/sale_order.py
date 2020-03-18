@@ -15,13 +15,11 @@ class SaleOrder(models.Model):
 
     @api.onchange("carrier_id")
     def _onchange_carrier_id(self):
-        if (
-            self.carrier_id
-            and self.partner_shipping_id.delivery_carrier_account_ids.filtered(
-                lambda l: l.carrier_id == self.carrier_id
-            )
+        account_ids = self.partner_shipping_id.delivery_carrier_account_ids
+        if self.carrier_id and account_ids.filtered(
+            lambda l: l.carrier_id == self.carrier_id
         ):
-            self.shipping_use_carrier_acct = self.partner_shipping_id.delivery_carrier_account_ids.filtered(
+            self.shipping_use_carrier_acct = account_ids.filtered(
                 lambda l: l.carrier_id == self.carrier_id
             ).delivery_carrier_account_num
         else:

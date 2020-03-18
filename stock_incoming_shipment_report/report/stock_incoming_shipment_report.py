@@ -50,6 +50,5 @@ class StockIncomingShipmentReport(models.TransientModel):
             if line.expiration_date_edit:
                 line.expiration_date = line.expiration_date_edit.strftime(date_format)
             if line.anticipated_arrival_date_edit:
-                line.anticipated_arrival_date = line.anticipated_arrival_date_edit.strftime(
-                    date_format
-                )
+                arrival_date = line.anticipated_arrival_date_edit.strftime(date_format)
+                line.anticipated_arrival_date = arrival_date

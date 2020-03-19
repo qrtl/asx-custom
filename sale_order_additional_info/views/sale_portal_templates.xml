@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-    <template id="sale_order_portal_content" inherit_id="sale.sale_order_portal_content">
+    <template
+        id="sale_order_portal_content"
+        inherit_id="sale.sale_order_portal_content"
+    >
         <xpath expr="//section[@id='terms']" position="before">
-            <section id="additional_info" class="mt-5" t-if="sale_order.additional_info">
+            <section
+                id="additional_info"
+                class="mt-5"
+                t-if="sale_order.additional_info"
+            >
                 <h3 class="">Additional Information</h3>
-                <hr class="mt-0 mb-1"/>
-                <em t-field="sale_order.additional_info"/>
+                <hr class="mt-0 mb-1" />
+                <em t-field="sale_order.additional_info" />
             </section>
         </xpath>
     </template>
-
 </odoo>

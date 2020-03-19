@@ -2,8 +2,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import json
-from odoo.addons.web.controllers.main import CSVExport
-from odoo.addons.web.controllers.main import ExcelExport
+
+from odoo.addons.web.controllers.main import CSVExport, ExcelExport
 
 
 class CSVExportInherit(CSVExport):
@@ -15,8 +15,8 @@ class CSVExportInherit(CSVExport):
         # When the stock.incoming.shipment.report model is selected, remove
         # the first element in the fields list which is the External ID by
         # default.
-        if params['model'] == 'stock.incoming.shipment.report':
-            params['fields'].pop(0)
+        if params["model"] == "stock.incoming.shipment.report":
+            params["fields"].pop(0)
             data = json.dumps(params)
         return super(CSVExportInherit, self).base(data, token)
 
@@ -30,7 +30,7 @@ class ExcelExportInherit(ExcelExport):
         # When the stock.incoming.shipment.report model is selected, remove
         # the first element in the fields list which is the External ID by
         # default.
-        if params['model'] == 'stock.incoming.shipment.report':
-            params['fields'].pop(0)
+        if params["model"] == "stock.incoming.shipment.report":
+            params["fields"].pop(0)
             data = json.dumps(params)
         return super(ExcelExportInherit, self).base(data, token)

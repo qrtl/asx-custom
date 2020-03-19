@@ -1,5 +1,4 @@
 inflect
 pyasn1
-ndg
 xlsxwriter
 xlrd

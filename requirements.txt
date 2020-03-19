@@ -1,6 +1,5 @@
 inflect
 pyasn1
-OpenSSL
 ndg
 xlsxwriter
 xlrd

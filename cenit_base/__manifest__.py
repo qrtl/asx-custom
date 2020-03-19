@@ -34,7 +34,8 @@
     """,
     "depends": ["base", "base_automation"],
     "external_dependencies": {
-        "python": ["inflect", "pyasn1", "OpenSSL", "ndg"]
+        # "python": ["inflect", "pyasn1", "OpenSSL", "ndg"]
+        "python": ["inflect"]
     },
     "data": [
         "security/ir.model.access.csv",

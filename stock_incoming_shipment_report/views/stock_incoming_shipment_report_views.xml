@@ -1,30 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_stock_incoming_shipment_report_tree" model="ir.ui.view">
         <field name="name">stock.incoming.shipment.report.tree</field>
         <field name="model">stock.incoming.shipment.report</field>
         <field name="arch" type="xml">
             <tree string="Stock Incoming Shipment Report" editable="top">
-                <field name="client_code"/>
-                <field name="tracking_pro_num"/>
-                <field name="seal"/>
-                <field name="anticipated_arrival_date" invisible="1"/>
-                <field name="anticipated_arrival_date_edit" string="Anticipated Arrival Date" widget="date"/>
-                <field name="client_receipt_ref_num"/>
-                <field name="client_vendor_po_num"/>
-                <field name="carrier_code"/>
-                <field name="load_type"/>
-                <field name="part_num"/>
-                <field name="lot_num"/>
-                <field name="expiration_date" invisible="1"/>
-                <field name="expiration_date_edit" string="Expiration Date" widget="date"/>
-                <field name="quantity_expected"/>
-                <field name="po_notes"/>
+                <field name="client_code" />
+                <field name="tracking_pro_num" />
+                <field name="seal" />
+                <field name="anticipated_arrival_date" invisible="1" />
+                <field
+                    name="anticipated_arrival_date_edit"
+                    string="Anticipated Arrival Date"
+                    widget="date"
+                />
+                <field name="client_receipt_ref_num" />
+                <field name="client_vendor_po_num" />
+                <field name="carrier_code" />
+                <field name="load_type" />
+                <field name="part_num" />
+                <field name="lot_num" />
+                <field name="expiration_date" invisible="1" />
+                <field
+                    name="expiration_date_edit"
+                    string="Expiration Date"
+                    widget="date"
+                />
+                <field name="quantity_expected" />
+                <field name="po_notes" />
             </tree>
         </field>
     </record>
-
     <record id="action_stock_incoming_shipment_report" model="ir.actions.act_window">
         <field name="name">Stock Incoming Shipment Report</field>
         <field name="res_model">stock.incoming.shipment.report</field>
@@ -32,8 +38,10 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree</field>
     </record>
-
-    <menuitem action="action_stock_incoming_shipment_report" id="stock_incoming_shipment_report_menu"
-              parent="stock.menu_warehouse_report" sequence="180"/>
-
+    <menuitem
+        action="action_stock_incoming_shipment_report"
+        id="stock_incoming_shipment_report_menu"
+        parent="stock.menu_warehouse_report"
+        sequence="180"
+    />
 </odoo>

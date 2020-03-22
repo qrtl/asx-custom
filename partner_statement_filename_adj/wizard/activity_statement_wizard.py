@@ -8,7 +8,7 @@ class ActivityStatementWizard(models.TransientModel):
     _inherit = "activity.statement.wizard"
 
     def _export(self):
-        report = self.env.ref('partner_statement.action_print_activity_statement')
+        report = self.env.ref("partner_statement.action_print_activity_statement")
         report_name = "Activity Statement "
         str_today = fields.Date.to_string(fields.Date.context_today(self))
         res_ids = self._context.get("active_ids")

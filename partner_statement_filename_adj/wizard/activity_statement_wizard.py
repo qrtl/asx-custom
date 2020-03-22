@@ -1,8 +1,7 @@
-# Copyright 2018 Eficent Business and IT Consulting Services S.L.
-#   (http://www.eficent.com)
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# Copyright 2020 Quartile Limited
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models
+from odoo import fields, models
 
 
 class ActivityStatementWizard(models.TransientModel):
@@ -10,11 +9,13 @@ class ActivityStatementWizard(models.TransientModel):
 
     def _export(self):
         report = self.env.ref('partner_statement.action_print_activity_statement')
+        report_name = "Activity Statement "
+        str_today = fields.Date.to_string(fields.Date.context_today(self))
         res_ids = self._context.get("active_ids")
-        # FIXME update report name of user's language
         if len(res_ids) == 1:
-            partner = self.env["res.partner"].browse(res_ids)
-            report.write({"name": "Activity Statement (" + partner.name + ")"})
+            partner_name = self.env["res.partner"].browse(res_ids).name.replace("/", "")
+            report_name += "(" + partner_name + ") " + str_today
         else:
-            report.write({"name": "Activity Statement"})
+            report_name += str_today
+        report.write({"name": report_name})
         return super(ActivityStatementWizard, self)._export()

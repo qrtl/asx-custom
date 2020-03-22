@@ -10,5 +10,4 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": ["partner_statement"],
-    "data": ["report/activity_statement.xml"]
 }

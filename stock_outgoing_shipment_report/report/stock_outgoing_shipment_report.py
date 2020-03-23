@@ -149,9 +149,11 @@ class StockOutgoingShipmentReport(models.TransientModel):
                 "order_note": ["OrderNote", 320],
                 "gift_message": ["Gift Message", 250],
             }
-            for field_name, values in fields_list:
-                if rec[field_name] and len(rec[field_name]) > values[1]:
-                    raise ValidationError(msg % (_(values[0]), values[1]))
+            for field in fields_list:
+                if rec[field] and len(rec[field]) > fields_list[field][1]:
+                    raise ValidationError(
+                        msg % (_(fields_list[field][0]), fields_list[field][1])
+                    )
 
     @api.constrains(
         "ship_to_state", "ship_to_country_code", "sold_to_state", "sold_to_country_code"

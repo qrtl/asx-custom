@@ -16,7 +16,8 @@ class StockOutgoingShipmentReport(models.TransientModel):
     po_number = fields.Char(
         related="move_id.sale_line_id.order_id.name", string="PONumber", store=True,
     )
-    po_date = fields.Char(string="PODate", compute="_compute_date_fields", store=True,)
+    po_date = fields.Char(
+        string="PODate", compute="_compute_date_fields", store=True,)
     po_date_edit = fields.Date(string="PODate (Not For Export)",)
     ship_date = fields.Char(
         string="ShipDate", compute="_compute_date_fields", store=True,
@@ -82,7 +83,8 @@ class StockOutgoingShipmentReport(models.TransientModel):
     sku = fields.Char(
         related="move_id.product_id.default_code", string="Sku", store=True,
     )
-    quantity = fields.Float(related="move_id.product_qty", string="Qty", store=True,)
+    quantity = fields.Float(related="move_id.product_qty",
+                            string="Qty", store=True,)
     description = fields.Char(string="Description",)
     po_line_no = fields.Char(string="PoLineNo",)
     item_no_ref = fields.Char(string="ItemNoRef",)
@@ -149,9 +151,10 @@ class StockOutgoingShipmentReport(models.TransientModel):
                 "order_note": ["OrderNote", 320],
                 "gift_message": ["Gift Message", 250],
             }
-            for field_name, values in fields_list:
-                if rec[field_name] and len(rec[field_name]) > values[1]:
-                    raise ValidationError(msg % (_(values[0]), values[1]))
+            for field in fields_list:
+                if rec[field] and len(rec[field]) > fields_list[field][1]:
+                    raise ValidationError(
+                        msg % (_(fields_list[field][0]), fields_list[field][1]))
 
     @api.constrains(
         "ship_to_state", "ship_to_country_code", "sold_to_state", "sold_to_country_code"
@@ -206,14 +209,15 @@ class StockOutgoingShipmentReport(models.TransientModel):
             if line.ship_date_edit:
                 line.ship_date = line.ship_date_edit.strftime(date_format)
             if line.ship_no_later_edit:
-                line.ship_no_later = line.ship_no_later_edit.strftime(date_format)
+                line.ship_no_later = line.ship_no_later_edit.strftime(
+                    date_format)
 
     @api.multi
     @api.depends("shipping_service_id")
     def _compute_ship_to_residential_indicator(self):
         for line in self:
             if (
-                line.shipping_service_id
-                and line.shipping_service_id.ship_to_residential_indicator
+                line.shipping_service_id and
+                line.shipping_service_id.ship_to_residential_indicator
             ):
                 line.ship_to_residential_indicator = "Y"

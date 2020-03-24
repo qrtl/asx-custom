@@ -9,10 +9,6 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": [
-        "stock",
-    ],
-    "data": [
-        "report/report_deliveryslip.xml",
-    ],
+    "depends": ["stock"],
+    "data": ["report/report_deliveryslip.xml"],
 }

@@ -1,71 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_stock_outgoing_shipment_report_tree" model="ir.ui.view">
         <field name="name">stock.outgoing.shipment.report.tree</field>
         <field name="model">stock.outgoing.shipment.report</field>
         <field name="arch" type="xml">
             <tree string="Stock Outgoing Shipment Report" editable="top">
-                <field name="customer_order_no"/>
-                <field name="po_number"/>
-                <field name="po_date" invisible="1"/>
-                <field name="po_date_edit" widget="date" string='PODate'/>
-                <field name="ship_date" invisible="1"/>
-                <field name="ship_date_edit" widget="date" string="ShipDate"/>
-                <field name="ship_no_later" invisible="1"/>
-                <field name="ship_no_later_edit" widget="date" string="ShipNoLater"/>
-                <field name="shipping_carrier"/>
-                <field name="shipping_service"/>
-                <field name="shipping_signature_requred"/>
-                <field name="shipping_saturday_delivery"/>
-                <field name="shipping_use_carrier_acct"/>
-                <field name="shipping_carrier_acct_type"/>
-                <field name="shipping_insure_shipment"/>
-                <field name="shipping_insurance_amount"/>
-                <field name="ship_from_dc"/>
-                <field name="ship_to_residential_indicator"/>
-                <field name="shipping_charge"/>
-                <field name="shipping_reference1"/>
-                <field name="shipping_reference2"/>
-                <field name="ship_to_first_name"/>
-                <field name="ship_to_last_name"/>
-                <field name="ship_to_company"/>
-                <field name="ship_to_address1" required="True"/>
-                <field name="ship_to_address2"/>
-                <field name="ship_to_city" required="True"/>
-                <field name="ship_to_state" required="True"/>
-                <field name="ship_to_country_code" required="True"/>
-                <field name="ship_to_zip"/>
-                <field name="ship_to_phone"/>
-                <field name="ship_to_customer_no"/>
-                <field name="shipping_con_code"/>
-                <field name="includes_kit_items"/>
-                <field name="sku" required="True"/>
-                <field name="quantity" required="True"/>
-                <field name="description"/>
-                <field name="po_line_no"/>
-                <field name="item_no_ref"/>
-                <field name="original_price"/>
-                <field name="price"/>
-                <field name="discounted_price"/>
-                <field name="sold_to_first_name"/>
-                <field name="sold_to_last_name"/>
-                <field name="sold_to_company"/>
-                <field name="sold_to_address1"/>
-                <field name="sold_to_address2"/>
-                <field name="sold_to_city"/>
-                <field name="sold_to_state"/>
-                <field name="sold_to_country_code"/>
-                <field name="sold_to_zip"/>
-                <field name="sold_to_phone"/>
-                <field name="sold_to_customer_no"/>
-                <field name="order_note"/>
-                <field name="gift_message"/>
-                <field name="lot"/>
+                <field name="customer_order_no" />
+                <field name="po_number" />
+                <field name="po_date" invisible="1" />
+                <field name="po_date_edit" widget="date" string='PODate' />
+                <field name="ship_date" invisible="1" />
+                <field name="ship_date_edit" widget="date" string="ShipDate" />
+                <field name="ship_no_later" invisible="1" />
+                <field name="ship_no_later_edit" widget="date" string="ShipNoLater" />
+                <field name="shipping_carrier" />
+                <field name="shipping_service" />
+                <field name="shipping_signature_requred" />
+                <field name="shipping_saturday_delivery" />
+                <field name="shipping_use_carrier_acct" />
+                <field name="shipping_carrier_acct_type" />
+                <field name="shipping_insure_shipment" />
+                <field name="shipping_insurance_amount" />
+                <field name="ship_from_dc" />
+                <field name="ship_to_residential_indicator" />
+                <field name="shipping_charge" />
+                <field name="shipping_reference1" />
+                <field name="shipping_reference2" />
+                <field name="ship_to_first_name" />
+                <field name="ship_to_last_name" />
+                <field name="ship_to_company" />
+                <field name="ship_to_address1" required="True" />
+                <field name="ship_to_address2" />
+                <field name="ship_to_city" required="True" />
+                <field name="ship_to_state" required="True" />
+                <field name="ship_to_country_code" required="True" />
+                <field name="ship_to_zip" />
+                <field name="ship_to_phone" />
+                <field name="ship_to_customer_no" />
+                <field name="shipping_con_code" />
+                <field name="includes_kit_items" />
+                <field name="sku" required="True" />
+                <field name="quantity" required="True" />
+                <field name="description" />
+                <field name="po_line_no" />
+                <field name="item_no_ref" />
+                <field name="original_price" />
+                <field name="price" />
+                <field name="discounted_price" />
+                <field name="sold_to_first_name" />
+                <field name="sold_to_last_name" />
+                <field name="sold_to_company" />
+                <field name="sold_to_address1" />
+                <field name="sold_to_address2" />
+                <field name="sold_to_city" />
+                <field name="sold_to_state" />
+                <field name="sold_to_country_code" />
+                <field name="sold_to_zip" />
+                <field name="sold_to_phone" />
+                <field name="sold_to_customer_no" />
+                <field name="order_note" />
+                <field name="gift_message" />
+                <field name="lot" />
             </tree>
         </field>
     </record>
-
     <record id="action_stock_outgoing_shipment_report" model="ir.actions.act_window">
         <field name="name">Stock Outgoing Shipment Report</field>
         <field name="res_model">stock.outgoing.shipment.report</field>
@@ -73,8 +71,10 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree</field>
     </record>
-
-    <menuitem action="action_stock_outgoing_shipment_report" id="stock_outgoing_shipment_report_menu"
-              parent="stock.menu_warehouse_report" sequence="170"/>
-
+    <menuitem
+        action="action_stock_outgoing_shipment_report"
+        id="stock_outgoing_shipment_report_menu"
+        parent="stock.menu_warehouse_report"
+        sequence="170"
+    />
 </odoo>

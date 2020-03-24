@@ -22,7 +22,6 @@ exclude: |
   partner_statement/|
   report_xlsx/|
   sale_automatic_workflow/|
-  sale_margin_security/|
   sql_request_abstract/|
   web_environment_ribbon/|
   web_favicon/

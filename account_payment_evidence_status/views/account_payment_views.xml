@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_payment_form_inherit_payment" model="ir.ui.view">
+        <field name="name">account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field
+            name="inherit_id"
+            ref="payment.view_account_payment_form_inherit_payment"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_transaction_id']" position="after">
+                <label for="evidence_status" string="Evidence Status" />
+                <div>
+                    <field name="evidence_status" />
+                    <div>
+                        <field name="evidence_text" />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_account_payment_tree" model="ir.ui.view">
+        <field name="name">account.payment.tree</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="evidence_status" />
+                <field name="evidence_text" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

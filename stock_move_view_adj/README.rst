@@ -10,18 +10,18 @@ Stock Move Views Adjustments
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
-    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
-    :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fasx--custom-lightgray.png?logo=github
+.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
+    :alt: License: LGPL-3
+.. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fasx--custom-lightgray.png?logo=github
     :target: https://github.com/qrtl/asx-custom/tree/12.0/stock_move_view_adj
     :alt: qrtl/asx-custom
-.. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/asx-custom-12-0/asx-custom-12-0-stock_move_view_adj
-    :alt: Translate me on Weblate
 
-|badge1| |badge2| |badge3| |badge4| 
+|badge1| |badge2| |badge3| 
 
+This module does the following:
+
+* Adjust stock move and stock move line views.
 
 **Table of contents**
 
@@ -48,3 +48,7 @@ Authors
 
 Maintainers
 ~~~~~~~~~~~
+
+This module is part of the `qrtl/asx-custom <https://github.com/qrtl/asx-custom/tree/12.0/stock_move_view_adj>`_ project on GitHub.
+
+You are welcome to contribute.

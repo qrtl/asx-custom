@@ -7,4 +7,9 @@ from odoo import fields, models
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
-    picking_partner_id = fields.Many2one('res.partner', 'Transfer Destination Address', related='picking_id.partner_id', readonly=False)
+    picking_partner_id = fields.Many2one(
+        "res.partner",
+        "Transfer Destination Address",
+        related="picking_id.partner_id",
+        readonly=False,
+    )

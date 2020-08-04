@@ -17,13 +17,7 @@ msgstr ""
 
 #. module: stock_move_view_adj
 #: model_terms:ir.ui.view,arch_db:stock_move_view_adj.view_move_form
-#: model_terms:ir.ui.view,arch_db:stock_move_view_adj.view_move_line_tree
 #: model_terms:ir.ui.view,arch_db:stock_move_view_adj.view_move_tree
 msgid "Delivery Address"
 msgstr "配送先"
-
-#. module: stock_move_view_adj
-#: model:ir.model.fields,field_description:stock_move_view_adj.field_stock_move_line__picking_partner_id
-msgid "Transfer Destination Address"
-msgstr "運送先アドレス"
 

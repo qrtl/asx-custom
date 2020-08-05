@@ -45,6 +45,7 @@ class GeneralLedgerReport(models.TransientModel):
         comodel_name='account.journal',
     )
     centralize = fields.Boolean()
+    hide_partner_without_moves = fields.Boolean()
 
     # Flag fields, used for report display
     show_cost_center = fields.Boolean(
@@ -321,6 +322,11 @@ class GeneralLedgerReportCompute(models.TransientModel):
         else:
             sub_subquery_sum_amounts += """
                 AND ml.date < %s
+            """
+
+        if self.hide_partner_without_moves:
+            sub_subquery_sum_amounts += """
+                AND ml.partner_id IS NULL
             """
 
         if not include_initial_balance:

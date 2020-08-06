@@ -49,13 +49,13 @@ Credits
 Authors
 ~~~~~~~
 
-* Quartile.co
+* Quartile Limited
 
 Contributors
 ~~~~~~~~~~~~
 
 * Yogesh Mahera <yogesh.mahera.serpentcs@gmail.com>
-* Tim Lai <tim@quartile.co>
+* Tim Lai <tl@quartile.co>
 
 Maintainers
 ~~~~~~~~~~~

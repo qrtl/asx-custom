@@ -88,10 +88,6 @@ class GeneralLedgerReportWizard(models.TransientModel):
              'will display initial and final balance in that currency.',
         default=lambda self: self._default_foreign_currency(),
     )
-    hide_partner_without_moves = fields.Boolean(
-        string='Hide Partners without Moves',
-        help="Hide the Accounts who don't have the partners",
-    )
 
     def _init_date_from(self):
         """set start date to begin of current year if fiscal year running"""
@@ -243,7 +239,6 @@ class GeneralLedgerReportWizard(models.TransientModel):
             'date_to': self.date_to,
             'only_posted_moves': self.target_move == 'posted',
             'hide_account_at_0': self.hide_account_at_0,
-            'hide_partner_without_moves': self.hide_partner_without_moves,
             'foreign_currency': self.foreign_currency,
             'show_analytic_tags': self.show_analytic_tags,
             'company_id': self.company_id.id,

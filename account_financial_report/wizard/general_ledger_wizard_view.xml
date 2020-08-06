@@ -41,9 +41,6 @@
                             <field name="partner_ids" nolabel="1"
                                    widget="many2many_tags"
                                    options="{'no_create': True}"/>
-                            <group>
-                                <field name="hide_partner_without_moves"/>
-                            </group>
                         </page>
                         <page string="Filter cost centers" groups="analytic.group_analytic_accounting">
                             <field name="cost_center_ids" nolabel="1"

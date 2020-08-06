@@ -42,8 +42,6 @@ currency used in account move lines is properly shown.
 In case that in an account has not been configured a second currency foreign
 currency balances are not available.
 
-Added `Hide Partners without Moves` filter: This filter hides the moves where they don't have `partner_id`
-
 **Table of contents**
 
 .. contents::

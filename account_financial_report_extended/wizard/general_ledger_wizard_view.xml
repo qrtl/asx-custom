@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="general_ledger_wizard">
+        <field name="name">General Ledger</field>
+        <field name="inherit_id" ref="account_financial_report.general_ledger_wizard" />
+        <field name="model">general.ledger.report.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <field name="partner_ids" position="after">
+                <group>
+                    <field name="hide_partner_without_moves" />
+                </group>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,18 +1,14 @@
-# Author: Yogesh Mahera
-# Author: Tim Lai
 # Copyright 2020 Quartile Limited
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Account Financial Reports Extended",
     "version": "12.0.1.0.0",
-    "category": "Reporting",
-    "summary": "OCA Financial Reports",
-    "author": "Quartile Limited, Odoo Community Association (OCA)",
-    "website": "https://odoo-community.org/",
+    "summary": "",
+    "category": "Stock",
+    "author": "Quartile Limited",
+    "website": "https://www.quartile.co/",
+    "license": "LGPL-3",
     "depends": ["account_financial_report"],
     "data": ["wizard/general_ledger_wizard_view.xml"],
     "installable": True,
-    "application": True,
-    "auto_install": False,
-    "license": "AGPL-3",
 }

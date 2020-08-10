@@ -9,7 +9,8 @@ class GeneralLedgerReportWizard(models.TransientModel):
 
     hide_partner_without_moves = fields.Boolean(
         string="Hide Partners without Moves",
-        help="If selected, partners that do not have account moves will not show in the result for payable and receivable accounts.",
+        help="If selected, partners that do not have account moves will"
+        " not show in the result for payable and receivable accounts.",
     )
 
     def _prepare_report_general_ledger(self):

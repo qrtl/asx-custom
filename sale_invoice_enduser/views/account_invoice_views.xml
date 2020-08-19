@@ -5,7 +5,7 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="sale.account_invoice_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='team_id']" position="after">
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <field name="enduser_id" />
             </xpath>
         </field>

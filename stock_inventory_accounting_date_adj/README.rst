@@ -21,7 +21,7 @@ Stock Inventory Accounting Date Adjustment
 
 This module does the following:
 
-- Remove the groups attribute of accounting_date in the stock inventory form view.
+- Removes the groups attribute of accounting_date in the stock inventory form view.
 
 **Table of contents**
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_inventory_form_inherit" model="ir.ui.view">
+        <field name="name">stock.inventory.form.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock_account.view_inventory_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='accounting_date']" position="attributes">
+                <attribute name="groups" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -5,7 +5,7 @@ from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
-    _inherit = 'res.partner'
+    _inherit = "res.partner"
 
     credit_balance = fields.Monetary(compute="_compute_risk_exception")
 
@@ -13,5 +13,5 @@ class ResPartner(models.Model):
     @api.depends(lambda x: x._get_depends_compute_risk_exception())
     def _compute_risk_exception(self):
         super()._compute_risk_exception()
-        for partner in self.filtered('customer'):
+        for partner in self.filtered("customer"):
             partner.credit_balance = partner.credit_limit - partner.risk_total

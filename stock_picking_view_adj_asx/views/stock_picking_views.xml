@@ -9,18 +9,11 @@
                 <label
                     for="evidence_status"
                     string="Evidence Status"
-                    attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"
                 />
                 <div>
-                    <field
-                        name="evidence_status"
-                        attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"
-                    />
+                    <field name="evidence_status" />
                     <div>
-                        <field
-                            name="evidence_text"
-                            attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"
-                        />
+                        <field name="evidence_text" />
                     </div>
                 </div>
             </xpath>

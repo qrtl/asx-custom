@@ -10,4 +10,17 @@
             </field>
         </field>
     </record>
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <field name="phone" position="before">
+                <field name="property_payment_term_id" />
+                <field name="credit_limit" />
+                <field name="risk_total" />
+                <field name="credit_balance" />
+            </field>
+        </field>
+    </record>
 </odoo>

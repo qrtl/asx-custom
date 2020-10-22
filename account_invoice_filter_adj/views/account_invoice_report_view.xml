@@ -1,16 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-<data>
-    <record id="view_account_invoice_report_search" model="ir.ui.view">
-        <field name="name">account.invoice.report.search</field>
-        <field name="model">account.invoice.report</field>
-        <field name="inherit_id" ref="account.view_account_invoice_report_search" />
-        <field name="arch" type="xml">
-            <field name="date" position="after">
-                <separator/>
-                <filter string="Invoice Date" name="filter_date_invoice" date="date"/>
+    <data>
+        <record id="view_account_invoice_report_search" model="ir.ui.view">
+            <field name="name">account.invoice.report.search</field>
+            <field name="model">account.invoice.report</field>
+            <field name="inherit_id" ref="account.view_account_invoice_report_search" />
+            <field name="arch" type="xml">
+                <field name="date" position="after">
+                    <separator />
+                    <filter
+                        string="Invoice Date"
+                        name="filter_date_invoice"
+                        date="date"
+                    />
+                </field>
             </field>
-        </field>
-    </record>
-</data>
+        </record>
+    </data>
 </odoo>

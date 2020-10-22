@@ -6,8 +6,12 @@
         <field name="inherit_id" ref="account.view_account_invoice_filter" />
         <field name="arch" type="xml">
             <field name="date" position="after">
-                <separator/>
-                <filter string="Invoice Date" name="filter_date_invoice" date="date_invoice"/>
+                <separator />
+                <filter
+                    string="Invoice Date"
+                    name="filter_date_invoice"
+                    date="date_invoice"
+                />
             </field>
         </field>
     </record>

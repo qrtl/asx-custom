@@ -10,8 +10,9 @@ exclude: |
   ^docs/_templates/.*\.html$|
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)|
-  # Exclude .travis.yml
+  # Exclude .travis.yml and pyproject.toml
   ^\.travis\.yml$|
+  ^pyproject\.toml$|
   # For v12.0 of before, exclude all oca modules
   account_financial_report/|
   account_financial_risk/|
@@ -93,7 +94,7 @@ repos:
       - id: mixed-line-ending
         args: ["--fix=lf"]
   - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v2.3.1
+    rev: v2.5.3
     hooks:
       - id: pylint
         name: pylint with optional checks

@@ -7,8 +7,6 @@ branches:
 cache:
   directories:
     - $HOME/.cache/pip
-    # Add cache for pre-commit on repo that uses it (mandatory for >= 13)
-    - $HOME/.cache/pre-commit
 
 python:
   # For branches <= 10.0, put `- "2.7.13"`
@@ -37,31 +35,15 @@ addons:
 #  - gem install compass --pre
 
 stages:
-  - linting
   - test
 
 jobs:
   include:
-    # use this linting job repos that use pre-commit (mandatory for >= 13)
-    - stage: linting
-      name: "pre-commit"
-      python: "3.6"  # Black requires python >= 3.6
-      install: pip install pre-commit
-      script: pre-commit run --all --show-diff-on-failure --verbose --color always
-      after_success:
-      before_install:
-    # use this linting job for repos that do not use pre-commit (default for < 13)
-    # - stage: linting
-    #   env:
-    #     - LINT_CHECK="1"
     - stage: test
       env:
         # add MAKEPOT="1" to a TEST line to export .pot files from
         # the test database after test success
         - TESTS="1" ODOO_REPO="odoo/odoo" MAKEPOT="1"
-    - stage: test
-      env:
-        - TESTS="1" ODOO_REPO="OCA/OCB"
     # Other env possibilities:
     # use this to install a standalone database to export .pot files
     # - MAKEPOT="1"

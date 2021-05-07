@@ -8,14 +8,31 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_quotation_send'][1]" position="attributes">
+                <attribute name="attrs">{"invisible":["|",("validated","=",False),("state","!=","draft")]}</attribute>
+                <attribute name="states" />
+            </xpath>
+            <xpath expr="//button[@name='action_quotation_send'][2]" position="attributes">
+                <attribute name="attrs">{"invisible":["|","|",("validated","=",False),("state","!=","draft"),("invoice_count","&gt;=",1)]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='print_quotation']" position="attributes">
+                <attribute name="attrs">{"invisible":["|",("validated","=",False),("state","!=","draft")]}</attribute>
+                <attribute name="states" />
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="attrs">{"invisible":["|",("validated","=",False),("state","!=","draft")]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='preview_sale_order']" position="attributes">
+                <attribute name="attrs">{"invisible":[("validated","=",False)]}</attribute>
+            </xpath>
             <button name="action_confirm" position="before">
                 <button name="request_validation"
                     string="Request Validation"
-                    attrs="{'invisible': ['|','|',('need_validation', '!=', True),('rejected','=',True),('state','not in',['draft','sent','to approve'])]}"
+                    attrs="{'invisible': ['|','|',('need_validation', '!=', True),('rejected','=',True),('state','not in',['draft','to approve'])]}"
                     type="object"/>
                 <button name="restart_validation"
                     string="Restart Validation"
-                    attrs="{'invisible': ['|',('review_ids', '=', []),('state','not in',['draft','sent','to approve'])]}"
+                    attrs="{'invisible': ['|',('review_ids', '=', []),('state','not in',['draft','to approve'])]}"
                     type="object"/>
             </button>
             <header position="after">
@@ -25,7 +42,7 @@
                 <div class="alert alert-warning"
                      role="alert"
                      attrs="{'invisible': ['|', '|', '|',
-                     ('validated', '=', True), ('state', 'not in', ['draft','sent','to approve']),
+                     ('validated', '=', True), ('state', 'not in', ['draft','to approve']),
                      ('rejected', '=', True), ('review_ids', '=', [])]}"
                      style="margin-bottom:0px;">
                     <p><i class="fa fa-info-circle"/>This SO needs to be
@@ -47,13 +64,13 @@
                 </div>
                 <div class="alert alert-success"
                      role="alert"
-                     attrs="{'invisible': ['|', '|', ('validated', '!=', True), ('state', 'not in', ['draft','sent','to approve']), ('review_ids', '=', [])]}"
+                     attrs="{'invisible': ['|', '|', ('validated', '!=', True), ('state', 'not in', ['draft','to approve']), ('review_ids', '=', [])]}"
                      style="margin-bottom:0px;">
                     <p><i class="fa fa-thumbs-up"/> Operation has been <b>validated</b>!</p>
                 </div>
                 <div class="alert alert-danger"
                      role="alert"
-                     attrs="{'invisible': ['|', '|', ('rejected', '!=', True), ('state', 'not in', ['draft','sent','to approve']), ('review_ids', '=', [])]}"
+                     attrs="{'invisible': ['|', '|', ('rejected', '!=', True), ('state', 'not in', ['draft','to approve']), ('review_ids', '=', [])]}"
                      style="margin-bottom:0px;">
                     <p><i class="fa fa-thumbs-down"/> Operation has been <b>rejected</b>.</p>
                 </div>

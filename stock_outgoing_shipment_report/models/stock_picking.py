@@ -22,7 +22,7 @@ class StockPicking(models.Model):
                 and move.sale_line_id.order_id.delivery_carrier_service_id
                 and move.sale_line_id.order_id.delivery_carrier_service_id.id
                 or False,
-                "shipping_use_carrier_acct": move.sale_line_id
+                "ship_account": move.sale_line_id
                 and move.sale_line_id.order_id.shipping_use_carrier_acct
                 or False,
                 "po_date_edit": move.sale_line_id

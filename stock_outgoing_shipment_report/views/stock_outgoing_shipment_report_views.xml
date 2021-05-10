@@ -6,7 +6,6 @@
         <field name="arch" type="xml">
             <tree string="Stock Outgoing Shipment Report" editable="top">
                 <field name="customer_order_no" />
-                <field name="po_number" />
                 <field name="po_date" invisible="1" />
                 <field name="po_date_edit" widget="date" string='PODate' />
                 <field name="ship_date" invisible="1" />
@@ -17,7 +16,7 @@
                 <field name="shipping_service" />
                 <field name="shipping_signature_requred" />
                 <field name="shipping_saturday_delivery" />
-                <field name="shipping_use_carrier_acct" />
+                <field name="ship_account" />
                 <field name="shipping_carrier_acct_type" />
                 <field name="shipping_insure_shipment" />
                 <field name="shipping_insurance_amount" />

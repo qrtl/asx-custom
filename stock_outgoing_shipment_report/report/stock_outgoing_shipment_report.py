@@ -11,10 +11,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
     move_id = fields.Many2one("stock.move", string="Stock Move", readonly=True,)
     carrier_id = fields.Many2one("delivery.carrier", string="Carrier",)
     customer_order_no = fields.Char(
-        related="move_id.picking_id.name", string="CustomerOrderNo", store=True,
-    )
-    po_number = fields.Char(
-        related="move_id.sale_line_id.order_id.name", string="PONumber", store=True,
+        related="move_id.picking_id.name", string="ReferenceNumber", store=True,
     )
     po_date = fields.Char(string="PODate", compute="_compute_date_fields", store=True,)
     po_date_edit = fields.Date(string="PODate (Not For Export)",)
@@ -27,13 +24,13 @@ class StockOutgoingShipmentReport(models.TransientModel):
     )
     ship_no_later_edit = fields.Date(string="ShipNoLater (Not For Export)",)
     shipping_carrier = fields.Char(
-        related="carrier_id.name", string="ShippingCarrier", store=True,
+        related="carrier_id.name", string="ShipCarrier", store=True,
     )
     shipping_service_id = fields.Many2one(
-        "delivery.carrier.service", string="ShippingService",
+        "delivery.carrier.service", string="ShipService",
     )
     shipping_service = fields.Char(
-        related="shipping_service_id.name", string="ShippingService", store=True,
+        related="shipping_service_id.name", string="ShipService", store=True,
     )
     shipping_signature_requred = fields.Selection(
         [("Y", "Y"), ("N", "N")], string="ShippingSignatureRequred", default="Y",
@@ -41,9 +38,8 @@ class StockOutgoingShipmentReport(models.TransientModel):
     shipping_saturday_delivery = fields.Selection(
         [("Y", "Y")], string="ShippingSaturdayDelivery", default=False,
     )
-    shipping_use_carrier_acct = fields.Char(
-        string="ShippingUseCarrierAcct", store=True,
-    )
+    ship_account = fields.Char("ShipAccount")
+    ship_billing = fields.Char("ShipBilling")
     shipping_carrier_acct_type = fields.Char(string="ShippingCarrierAcctType",)
     shipping_insure_shipment = fields.Selection(
         [("Y", "Y")], string="ShippingInsureShipment", default=False,
@@ -62,7 +58,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
         readonly=False,
     )
     shipping_charge = fields.Char(string="ShippingCharge",)
-    shipping_reference1 = fields.Char(string="ShippingReference1",)
+    shipping_reference1 = fields.Char(string="PurchaseOrderNumber",)
     shipping_reference2 = fields.Char(string="ShippingReference2",)
     ship_to_first_name = fields.Char(string="ShipToFirstName",)
     ship_to_last_name = fields.Char(string="ShipToLastName",)
@@ -82,8 +78,8 @@ class StockOutgoingShipmentReport(models.TransientModel):
     sku = fields.Char(
         related="move_id.product_id.default_code", string="Sku", store=True,
     )
-    quantity = fields.Float(related="move_id.product_qty", string="Qty", store=True,)
-    description = fields.Char(string="Description",)
+    quantity = fields.Float(related="move_id.product_qty", string="Quantity", store=True,)
+    description = fields.Char(string="OrderNotes",)
     po_line_no = fields.Char(string="PoLineNo",)
     item_no_ref = fields.Char(string="ItemNoRef",)
     original_price = fields.Char(string="OriginalPrice",)

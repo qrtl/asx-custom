@@ -1,4 +1,4 @@
-# Copyright 2019 Quartile Limited
+# Copyright 2019-2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
@@ -9,7 +9,6 @@ class StockOutgoingShipmentReport(models.TransientModel):
     _name = "stock.outgoing.shipment.report"
 
     move_id = fields.Many2one("stock.move", string="Stock Move", readonly=True,)
-    carrier_id = fields.Many2one("delivery.carrier", string="Carrier",)
     customer_order_no = fields.Char(
         related="move_id.picking_id.name", string="ReferenceNumber", store=True,
     )
@@ -23,6 +22,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
         string="ShipNoLater", compute="_compute_date_fields", store=True,
     )
     ship_no_later_edit = fields.Date(string="ShipNoLater (Not For Export)",)
+    carrier_id = fields.Many2one("delivery.carrier", string="Carrier",)
     shipping_carrier = fields.Char(
         related="carrier_id.name", string="ShipCarrier", store=True,
     )

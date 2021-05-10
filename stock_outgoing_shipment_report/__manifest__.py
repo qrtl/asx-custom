@@ -1,4 +1,4 @@
-# Copyright 2019 Quartile Limited
+# Copyright 2019-2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Stock Outgoing Shipment Report",

@@ -7,7 +7,7 @@ from odoo import api, fields, models
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    shipping_insurance_amt = fields.Float(string="Shipping Insurance Amount",)
+    shipping_insurance_amt = fields.Float("Shipping Insurance Amount", help="For information only.")
     delivery_carrier_service_id = fields.Many2one(
         "delivery.carrier.service", string="Delivery Service",
     )

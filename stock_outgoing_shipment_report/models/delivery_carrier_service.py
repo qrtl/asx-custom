@@ -25,7 +25,7 @@ class DeliveryCarrierService(models.Model):
         string="MOS",
         required=True,
     )
-    ship_to_residential_indicator = fields.Boolean(string="ShipToResidentialIndicator",)
+    ship_to_residential_indicator = fields.Boolean("ShipToResidentialIndicator", help="For information only.")
 
     def name_get(self):
         res = []

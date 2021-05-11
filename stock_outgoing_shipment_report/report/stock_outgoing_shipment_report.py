@@ -18,7 +18,10 @@ class StockOutgoingShipmentReport(models.TransientModel):
     ship_date = fields.Char(
         string="ShipDate", compute="_compute_date_fields", store=True,
     )
-    ship_date_edit = fields.Date("ShipDate (Not For Export)", help="Defaulted from Scheduled Date of the picking.")
+    ship_date_edit = fields.Date(
+        "ShipDate (Not For Export)",
+        help="Defaulted from Scheduled Date of the picking.",
+    )
     cancel_date = fields.Char(
         string="CancelDate", compute="_compute_date_fields", store=True,
     )
@@ -48,7 +51,9 @@ class StockOutgoingShipmentReport(models.TransientModel):
         related="move_id.product_id.default_code", string="Sku", store=True,
     )
     lot_number = fields.Char("LotNumber")
-    quantity = fields.Float(related="move_id.product_qty", string="Quantity", store=True)
+    quantity = fields.Float(
+        related="move_id.product_qty", string="Quantity", store=True
+    )
     line_item_fulfillment_sale_price = fields.Char("LineItemFulfillmentSalePrice")
     sold_to_address1 = fields.Char("SoldToAddress1")
     sold_to_address2 = fields.Char("SoldToAddress2")

@@ -12,9 +12,7 @@ class StockPicking(models.Model):
         moves = self.mapped("move_lines")
         self._cr.execute("DELETE FROM stock_outgoing_shipment_report")
         for move in moves:
-            sale_line = move.sale_line_id
-            if sale_line:
-                order = sale_line.order_id
+            order = move.sale_line_id.order_id if move.sale_line_id else False
             picking = move.picking_id
             partner = move.picking_partner_id
             product = move.product_id
@@ -22,9 +20,14 @@ class StockPicking(models.Model):
             if order:
                 carrier = order.carrier_id
                 vals["carrier_id"] = carrier.id if carrier else False
-                vals["ship_service_id"] = order.delivery_carrier_service_id and order.delivery_carrier_service_id.id
+                vals["ship_service_id"] = (
+                    order.delivery_carrier_service_id
+                    and order.delivery_carrier_service_id.id
+                )
                 vals["ship_account"] = order.shipping_use_carrier_acct
-            vals["ship_date_edit"] = fields.Datetime.context_timestamp(self, picking.scheduled_date).date()
+            vals["ship_date_edit"] = fields.Datetime.context_timestamp(
+                self, picking.scheduled_date
+            ).date()
             vals["purchase_order_number"] = picking.client_order_ref
             if partner:
                 vals["ship_to_name"] = partner.name[:30]
@@ -37,7 +40,9 @@ class StockPicking(models.Model):
                 vals["ship_to_country"] = partner.country_id and partner.country_id.code
                 vals["ship_to_zip"] = partner.zip
                 vals["ship_to_phone"] = partner.phone
-            vals["order_notes"] = product.product_tmpl_id.delivery_report_desc or product.name[:40]
+            vals["order_notes"] = (
+                product.product_tmpl_id.delivery_report_desc or product.name[:40]
+            )
             self.env["stock.outgoing.shipment.report"].create(vals)
         return self.env.ref(
             "stock_outgoing_shipment_report.action_stock_outgoing_shipment_report"

@@ -8,11 +8,11 @@ from odoo.exceptions import ValidationError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    delivery_report_desc = fields.Char(string="Description (Delivery Report)",)
+    delivery_report_desc = fields.Char(string="Order Notes (Delivery Report)",)
 
     @api.constrains("delivery_report_desc")
     def _validate_delivery_report_desc(self):
         for rec in self:
             msg = _("%s should be at most %s digit(s).")
             if rec.delivery_report_desc and len(rec.delivery_report_desc) > 40:
-                raise ValidationError(msg % (_("Description (Delivery Report)"), "40"))
+                raise ValidationError(msg % (_("Order Notes (Delivery Report)"), "40"))

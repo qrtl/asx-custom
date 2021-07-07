@@ -35,9 +35,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
     ship_service = fields.Char(
         related="ship_service_id.name", string="ShipService", store=True,
     )
-    ship_account = fields.Char(
-        "ShipAccount" , related="ship_carrier.name"
-        )
+    ship_account = fields.Char("ShipAccount")
     ship_billing = fields.Char("ShipBilling")
     ship_to_name = fields.Char("ShipToName")
     ship_to_company = fields.Char("ShipToCompany")

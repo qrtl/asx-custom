@@ -15,5 +15,5 @@ class DeliveryCarrier(models.Model):
 
     ship_billing = fields.Selection(
         [("third_party", "Third Party"), ("bill_third_party", "Bill Third Party")],
-        string="Ship Billing"
+        string="Ship Billing",
     )

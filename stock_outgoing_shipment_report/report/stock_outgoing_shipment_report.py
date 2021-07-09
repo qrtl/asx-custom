@@ -26,9 +26,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
         string="CancelDate", compute="_compute_date_fields", store=True,
     )
     cancel_date_edit = fields.Date("CancelDate (Not For Export)")
-    ship_carrier = fields.Char(
-        related="carrier_id.name", string="ShipCarrier",
-    )
+    ship_carrier = fields.Char(related="carrier_id.name", string="ShipCarrier",)
     ship_service_id = fields.Many2one(
         "delivery.carrier.service", string="ShipService (Not for Export)",
     )

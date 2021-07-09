@@ -27,7 +27,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
     )
     cancel_date_edit = fields.Date("CancelDate (Not For Export)")
     ship_carrier = fields.Char(
-        related="carrier_id.name", string="ShipCarrier", store=True,
+        related="carrier_id.name", string="ShipCarrier",
     )
     ship_service_id = fields.Many2one(
         "delivery.carrier.service", string="ShipService (Not for Export)",
@@ -36,7 +36,9 @@ class StockOutgoingShipmentReport(models.TransientModel):
         related="ship_service_id.name", string="ShipService", store=True,
     )
     ship_account = fields.Char("ShipAccount")
-    ship_billing = fields.Char("ShipBilling")
+    ship_billing = fields.Selection(
+        related="carrier_id.ship_billing", string="ShipBilling", store=True,
+    )
     ship_to_name = fields.Char("ShipToName")
     ship_to_company = fields.Char("ShipToCompany")
     ship_to_address1 = fields.Char("ShipToAddress1")
@@ -69,6 +71,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
 
     @api.constrains(
         "ship_to_name",
+        "ship_account",
         "ship_billing",
         "ship_to_company",
         "ship_to_address1",
@@ -84,6 +87,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
             msg = _("%s should be at most %s digit(s).")
             fields_list = {
                 "ship_to_name": ["ShipToName", 30],
+                "ship_account": ["ShipAccount", 30],
                 "ship_to_company": ["ShipToCompany", 30],
                 "ship_to_address1": ["ShipToAddress1", 30],
                 "ship_to_address2": ["ShipToAddress2", 30],

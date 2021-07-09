@@ -12,3 +12,8 @@ class DeliveryCarrier(models.Model):
         inverse_name="carrier_id",
         string="Available Service(s)",
     )
+
+    ship_billing = fields.Selection(
+        [("third_party", "Third Party"), ("bill_third_party", "Bill Third Party")],
+        string="Ship Billing"
+    )

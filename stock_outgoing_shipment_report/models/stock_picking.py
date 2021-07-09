@@ -18,12 +18,14 @@ class StockPicking(models.Model):
             product = move.product_id
             vals = {"move_id": move.id}
             if order:
-                carrier = order.carrier_id
+                carrier = self.carrier_id
                 vals["carrier_id"] = carrier.id if carrier else False
                 vals["ship_service_id"] = (
                     order.delivery_carrier_service_id
                     and order.delivery_carrier_service_id.id
                 )
+                vals["ship_carrier"] = carrier.name
+                vals["ship_billing"] = carrier.ship_billing
                 vals["ship_account"] = order.shipping_use_carrier_acct
             vals["ship_date_edit"] = fields.Datetime.context_timestamp(
                 self, picking.scheduled_date

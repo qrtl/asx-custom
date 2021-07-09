@@ -26,7 +26,9 @@ class StockOutgoingShipmentReport(models.TransientModel):
         string="CancelDate", compute="_compute_date_fields", store=True,
     )
     cancel_date_edit = fields.Date("CancelDate (Not For Export)")
-    ship_carrier = fields.Char(related="carrier_id.name", string="ShipCarrier",)
+    ship_carrier = fields.Char(
+        related="carrier_id.name", string="ShipCarrier", store=True,
+    )
     ship_service_id = fields.Many2one(
         "delivery.carrier.service", string="ShipService (Not for Export)",
     )
@@ -35,7 +37,7 @@ class StockOutgoingShipmentReport(models.TransientModel):
     )
     ship_account = fields.Char("ShipAccount")
     ship_billing = fields.Selection(
-        related="carrier_id.ship_billing", string="ShipBilling", store=True,
+        related="carrier_id.ship_billing", string="ShipBilling",
     )
     ship_to_name = fields.Char("ShipToName")
     ship_to_company = fields.Char("ShipToCompany")

@@ -71,8 +71,6 @@ class StockOutgoingShipmentReport(models.TransientModel):
 
     @api.constrains(
         "ship_to_name",
-        "ship_account",
-        "ship_billing",
         "ship_to_company",
         "ship_to_address1",
         "ship_to_address2",
@@ -87,7 +85,6 @@ class StockOutgoingShipmentReport(models.TransientModel):
             msg = _("%s should be at most %s digit(s).")
             fields_list = {
                 "ship_to_name": ["ShipToName", 30],
-                "ship_account": ["ShipAccount", 30],
                 "ship_to_company": ["ShipToCompany", 30],
                 "ship_to_address1": ["ShipToAddress1", 30],
                 "ship_to_address2": ["ShipToAddress2", 30],
@@ -96,7 +93,6 @@ class StockOutgoingShipmentReport(models.TransientModel):
                 "sold_to_address1": ["SoldToAddress1", 30],
                 "sold_to_address2": ["SoldToAddress2", 30],
                 "sold_to_city": ["SoldToCity", 30],
-                "ship_billing": ["ShipBilling", 30],
             }
             for field in fields_list:
                 if rec[field] and len(rec[field]) > fields_list[field][1]:

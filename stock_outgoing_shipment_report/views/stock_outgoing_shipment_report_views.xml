@@ -22,8 +22,8 @@
                     invisible="1"
                 />
                 <field name="ship_carrier" />
-                <field name="ship_billing" invisible="1" />
                 <field name="ship_service" />
+                <field name="ship_billing" invisible="1" />
                 <field name="ship_account" />
                 <field name="ship_to_name" />
                 <field name="ship_to_company" />

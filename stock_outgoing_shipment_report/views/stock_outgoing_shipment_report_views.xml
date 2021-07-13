@@ -8,12 +8,23 @@
                 <field name="reference_number" />
                 <field name="purchase_order_number" />
                 <field name="ship_date" invisible="1" />
-                <field name="ship_date_edit" widget="date" string="ShipDate" />
+                <field
+                    name="ship_date_edit"
+                    widget="date"
+                    string="ShipDate"
+                    invisible="1"
+                />
                 <field name="cancel_date" invisible="1" />
-                <field name="cancel_date_edit" widget="date" string="CancelDate" />
+                <field
+                    name="cancel_date_edit"
+                    widget="date"
+                    string="CancelDate"
+                    invisible="1"
+                />
                 <field name="ship_carrier" />
                 <field name="ship_service" />
-                <field name="ship_billing" />
+                <field name="ship_billing" invisible="1" />
+                <field name="ship_account" />
                 <field name="ship_to_name" />
                 <field name="ship_to_company" />
                 <field name="ship_to_address1" required="True" />

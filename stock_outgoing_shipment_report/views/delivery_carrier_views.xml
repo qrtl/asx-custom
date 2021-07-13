@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="after">
                 <field name="delivery_carrier_service_ids" widget="many2many_tags" />
+                <field name="ship_billing" />
             </xpath>
         </field>
     </record>

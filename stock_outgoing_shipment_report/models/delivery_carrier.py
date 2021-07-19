@@ -12,3 +12,9 @@ class DeliveryCarrier(models.Model):
         inverse_name="carrier_id",
         string="Available Service(s)",
     )
+
+    ship_billing = fields.Char(
+        help="The value set here will show as"
+        "ShipBilling in the outgoing shipment report.",
+        string="Ship Billing",
+    )

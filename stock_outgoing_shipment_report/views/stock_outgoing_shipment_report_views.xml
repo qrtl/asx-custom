@@ -5,62 +5,51 @@
         <field name="model">stock.outgoing.shipment.report</field>
         <field name="arch" type="xml">
             <tree string="Stock Outgoing Shipment Report" editable="top">
-                <field name="customer_order_no" />
-                <field name="po_number" />
-                <field name="po_date" invisible="1" />
-                <field name="po_date_edit" widget="date" string='PODate' />
+                <field name="reference_number" />
+                <field name="purchase_order_number" />
                 <field name="ship_date" invisible="1" />
-                <field name="ship_date_edit" widget="date" string="ShipDate" />
-                <field name="ship_no_later" invisible="1" />
-                <field name="ship_no_later_edit" widget="date" string="ShipNoLater" />
-                <field name="shipping_carrier" />
-                <field name="shipping_service" />
-                <field name="shipping_signature_requred" />
-                <field name="shipping_saturday_delivery" />
-                <field name="shipping_use_carrier_acct" />
-                <field name="shipping_carrier_acct_type" />
-                <field name="shipping_insure_shipment" />
-                <field name="shipping_insurance_amount" />
-                <field name="ship_from_dc" />
-                <field name="ship_to_residential_indicator" />
-                <field name="shipping_charge" />
-                <field name="shipping_reference1" />
-                <field name="shipping_reference2" />
-                <field name="ship_to_first_name" />
-                <field name="ship_to_last_name" />
+                <field
+                    name="ship_date_edit"
+                    widget="date"
+                    string="ShipDate"
+                    invisible="1"
+                />
+                <field name="cancel_date" invisible="1" />
+                <field
+                    name="cancel_date_edit"
+                    widget="date"
+                    string="CancelDate"
+                    invisible="1"
+                />
+                <field name="ship_carrier" />
+                <field name="ship_service" />
+                <field name="ship_billing" invisible="1" />
+                <field name="ship_account" />
+                <field name="ship_to_name" />
                 <field name="ship_to_company" />
                 <field name="ship_to_address1" required="True" />
                 <field name="ship_to_address2" />
                 <field name="ship_to_city" required="True" />
                 <field name="ship_to_state" required="True" />
-                <field name="ship_to_country_code" required="True" />
                 <field name="ship_to_zip" />
+                <field name="ship_to_country" required="True" />
                 <field name="ship_to_phone" />
-                <field name="ship_to_customer_no" />
-                <field name="shipping_con_code" />
-                <field name="includes_kit_items" />
+                <field name="retailerid" />
                 <field name="sku" required="True" />
+                <field name="lot_number" />
                 <field name="quantity" required="True" />
-                <field name="description" />
-                <field name="po_line_no" />
-                <field name="item_no_ref" />
-                <field name="original_price" />
-                <field name="price" />
-                <field name="discounted_price" />
-                <field name="sold_to_first_name" />
-                <field name="sold_to_last_name" />
-                <field name="sold_to_company" />
+                <field name="line_item_fulfillment_sale_price" />
                 <field name="sold_to_address1" />
                 <field name="sold_to_address2" />
                 <field name="sold_to_city" />
                 <field name="sold_to_state" />
-                <field name="sold_to_country_code" />
                 <field name="sold_to_zip" />
+                <field name="sold_to_country" />
                 <field name="sold_to_phone" />
-                <field name="sold_to_customer_no" />
-                <field name="order_note" />
-                <field name="gift_message" />
-                <field name="lot" />
+                <field name="sold_to_code" />
+                <field name="order_notes" />
+                <field name="fulfillment_gift_message" />
+                <field name="incomplete_status" />
             </tree>
         </field>
     </record>

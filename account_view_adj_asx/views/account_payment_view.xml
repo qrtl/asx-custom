@@ -20,12 +20,52 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="inside">
                 <group string="Invoices">
-                    <field
-                        name="invoice_ids"
-                        context="{'tree_view_ref': 'account.invoice_tree'}"
-                        nolabel="1"
-                    />
+                    <field name="invoice_ids" nolabel="1">
+                        <tree string="Invoice" create="false">
+                            <field
+                                name="partner_id"
+                                groups="base.group_user"
+                                string="Customer"
+                            />
+                            <field name="date_invoice" />
+                            <field name="number" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                options="{'no_create': True}"
+                            />
+                            <field name="user_id" />
+                            <field name="date_due" />
+                            <field name="origin" />
+                            <field
+                                name="amount_untaxed_invoice_signed"
+                                string="Tax Excluded"
+                                sum="Total"
+                            />
+                            <field name="amount_tax_signed" string="Tax" sum="Total" />
+                            <field
+                                name="amount_total_signed"
+                                string="Total"
+                                sum="Total"
+                            />
+                            <field
+                                name="residual_signed"
+                                string="Amount Due"
+                                sum="Amount Due"
+                            />
+                            <field name="state" />
+                            <field name="type" invisible="context.get('type',True)" />
+                        </tree>
+                    </field>
                 </group>
+            </xpath>
+            <xpath
+                expr="//field[@name='invoice_ids']//field[@name='partner_id']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'column_invisible': [('parent.partner_type', '=', 'vendor')]}</attribute>
             </xpath>
         </field>
     </record>

@@ -25,15 +25,10 @@
                             <field
                                 name="partner_id"
                                 groups="base.group_user"
-                                string="Customer"
+                                string="Partner"
                             />
                             <field name="date_invoice" />
                             <field name="number" />
-                            <field
-                                name="company_id"
-                                groups="base.group_multi_company"
-                                options="{'no_create': True}"
-                            />
                             <field name="user_id" />
                             <field name="date_due" />
                             <field name="origin" />
@@ -54,18 +49,9 @@
                                 sum="Amount Due"
                             />
                             <field name="state" />
-                            <field name="type" invisible="context.get('type',True)" />
                         </tree>
                     </field>
                 </group>
-            </xpath>
-            <xpath
-                expr="//field[@name='invoice_ids']//field[@name='partner_id']"
-                position="attributes"
-            >
-                <attribute
-                    name="attrs"
-                >{'column_invisible': [('parent.partner_type', '=', 'vendor')]}</attribute>
             </xpath>
         </field>
     </record>

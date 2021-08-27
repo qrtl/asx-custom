@@ -26,7 +26,7 @@
                             <field name="date_invoice" />
                             <field name="number" />
                             <field name="name" />
-                            <field name="user_id" string="In Change" />
+                            <field name="user_id" string="In Charge" />
                             <field name="date_due" />
                             <field name="origin" />
                             <field

@@ -21,7 +21,7 @@
             <xpath expr="//sheet" position="inside">
                 <group string="Invoices">
                     <field name="invoice_ids" nolabel="1">
-                        <tree string="Invoice">
+                        <tree string="Invoices">
                             <field name="partner_id" string="Partner" />
                             <field name="date_invoice" />
                             <field name="number" />

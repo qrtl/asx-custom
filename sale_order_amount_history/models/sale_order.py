@@ -8,6 +8,23 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     amount_history_ids = fields.One2many("sale.order.amount.history", "order_id", string="Amount History")
+    # company_currency_id = fields.Many2one(related="company_id.currency_id", string="Company Currency", readonly=True)
+    # amount_untaxed_company = fields.Monetary(
+    #     string="Untaxed Amount in Company Currency",
+    #     currency_field="company_currency_id",
+    #     store=True,
+    #     compute="_compute_amount_untaxed_company"
+    # )
+
+    # @api.depends("confirmation_date", "amount_untaxed_company", "currency_id", "company_id")
+    # def _compute_amount_untaxed_company(self):
+    #     for order in self:
+    #         rate_date = fields.Date.to_date(
+    #             fields.Datetime.context_timestamp(order, order.confirmation_date)
+    #         ) if order.confirmation_date else fields.Date.context_today()
+    #         order.amount_untaxed_company = order.currency_id._convert(
+    #             order.amount_untaxed, order.company_currency_id, order.company_id, rate_date
+    #         )
 
     def _get_history_vals(self, type=False):
         self.ensure_one()

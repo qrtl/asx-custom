@@ -9,6 +9,7 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": ["sale"],
+    "post_init_hook": "post_init_hook",
     "data": [
         "security/ir.model.access.csv",
         "views/sale_order_amount_history_views.xml",

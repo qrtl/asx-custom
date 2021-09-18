@@ -15,9 +15,10 @@
                             <field name="currency_id" />
                             <field name="amount_diff" />
                             <field name="amount" />
-                            <field name="company_id" />
+                            <field name="company_id" invisible="1" />
                             <field name="company_currency_id" />
                             <field name="amount_diff_company" />
+                            <field name="amount_company" />
                         </group>
                     </group>
                 </sheet>
@@ -36,9 +37,10 @@
                 <field name="currency_id" />
                 <field name="amount_diff" />
                 <field name="amount" />
-                <field name="company_id" />
+                <field name="company_id" invisible="1" />
                 <field name="company_currency_id" />
                 <field name="amount_diff_company" />
+                <field name="amount_company" />
             </tree>
         </field>
     </record>

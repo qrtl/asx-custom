@@ -8,58 +8,46 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     amount_history_ids = fields.One2many("sale.order.amount.history", "order_id", string="Amount History")
-    # company_currency_id = fields.Many2one(related="company_id.currency_id", string="Company Currency", readonly=True)
-    # amount_untaxed_company = fields.Monetary(
-    #     string="Untaxed Amount in Company Currency",
-    #     currency_field="company_currency_id",
-    #     store=True,
-    #     compute="_compute_amount_untaxed_company"
-    # )
 
-    # @api.depends("confirmation_date", "amount_untaxed_company", "currency_id", "company_id")
-    # def _compute_amount_untaxed_company(self):
-    #     for order in self:
-    #         rate_date = fields.Date.to_date(
-    #             fields.Datetime.context_timestamp(order, order.confirmation_date)
-    #         ) if order.confirmation_date else fields.Date.context_today()
-    #         order.amount_untaxed_company = order.currency_id._convert(
-    #             order.amount_untaxed, order.company_currency_id, order.company_id, rate_date
-    #         )
-
-    def _get_history_vals(self, type=False):
+    def _get_order_count(self, type, amount_diff):
+        """If the amount is zero, the order should not be "counted".
+        """
         self.ensure_one()
-        res = {
+        if type == "add":
+            return 1 if self.amount_untaxed > 0.0 else 0
+        if type == "delete":
+            return -1 if self.amount_untaxed > 0.0 else 0
+        # The following lines are for the type "change".
+        if self.amount_untaxed > 0.0 and self.amount_untaxed == amount_diff:
+            # i.e. amount is changed from zero.
+            return 1
+        elif self.amount_untaxed == 0.0:
+            # i.e. amount is changed to zero
+            return -1
+        return 0
+
+    def _create_history_vals(self, type, amount_diff):
+        self.ensure_one()
+        vals = {
+            "history_type": type,
             "order_id": self.id,
             "currency_id": self.currency_id.id,
+            "order_count": self._get_order_count(type, amount_diff),
+            "amount": self.amount_untaxed if type in ("add", "change") else 0.0,
+            "amount_diff": amount_diff,
         }
-        if type == "add":
-            res["history_type"] = "add"
-            res["order_count"] = 1
-            res["amount"] = self.amount_untaxed
-            res["amount_diff"] = self.amount_untaxed
-        elif type == "delete":
-            res["history_type"] = "delete"
-            res["order_count"] = -1
-            res["amount_diff"] = -self.amount_untaxed
-        elif type == "change":
-            res["history_type"] = "change"
-            res["amount"] = self.amount_untaxed
-        return res
+        self.env["sale.order.amount.history"].create(vals)
 
     def write(self, vals):
         for order in self:
-            history_obj = self.env["sale.order.amount.history"]
-            history_vals = {}
             if order.state in ("draft", "sent") and vals.get("state") in ("sale", "done"):
-                history_vals = order._get_history_vals(type="add")
+                order._create_history_vals("add", order.amount_untaxed)
             elif order.state in ("sale", "done") and vals.get("state") == "cancel":
-                history_vals = order._get_history_vals(type="delete")
-            if history_vals:
-                history_obj.create(history_vals)
+                order._create_history_vals("delete", -order.amount_untaxed)
         res = super().write(vals)
         for order in self:
             if order.state in ("sale", "done"):
-                history_rec = history_obj.search(
+                history_rec = self.env["sale.order.amount.history"].search(
                     [
                         ("order_id", "=" , order.id),
                         ("history_type", "in" , ("add", "change")),
@@ -68,7 +56,5 @@ class SaleOrder(models.Model):
                 last_amount = history_rec.amount if history_rec else 0.0
                 amount_diff = order.amount_untaxed - last_amount
                 if amount_diff:
-                    history_vals = order._get_history_vals(type="change")
-                    history_vals["amount_diff"] = amount_diff
-                    history_obj.create(history_vals)
+                    order._create_history_vals("change", amount_diff)
         return res

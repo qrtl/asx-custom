@@ -29,3 +29,11 @@ to zero.  Below are the patterns.
 * Amount is changed from non-zero to zero for a confirmed sales order.  -> -1
 * Conirmed sales order with non-zero amount is cancelled.  -> -1
 * Conirmed sales order with zero amount is cancelled.  -> 0
+
+The date to capture the exchange rate for
+-----------------------------------------
+
+The exchange rate for company currency amount conversion is based on the Confirmation
+Date of the sales order (instead of the date of the history record).  This is to avoid
+the confusion of having some unwanted balance when a confirmed foreign currency order
+is cancelled in the next month, for example.

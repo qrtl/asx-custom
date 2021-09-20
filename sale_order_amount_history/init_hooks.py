@@ -1,7 +1,7 @@
 # Copyright 2021 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import fields, SUPERUSER_ID
+from odoo import SUPERUSER_ID, fields
 from odoo.api import Environment
 
 

@@ -4,7 +4,7 @@
         <field name="name">view.sale.order.amount.history.form</field>
         <field name="model">sale.order.amount.history</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="false" edit="false" delete="false">
                 <sheet>
                     <group>
                         <group>
@@ -36,7 +36,7 @@
         <field name="name">view.sale.order.amount.history.tree</field>
         <field name="model">sale.order.amount.history</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="false" edit="false" delete="false">
                 <field name="date" />
                 <field name="order_id" />
                 <field name="partner_id" />
@@ -57,28 +57,49 @@
         <field name="model">sale.order.amount.history</field>
         <field name="arch" type="xml">
             <pivot string="Sales Order Amount History">
-                <field name="date" type="row"/>
+                <field name="date" type="row" />
                 <field name="order_count" type="measure" />
-                <field name="amount_diff_company" type="measure" string="Untaxed Amount" />
+                <field
+                    name="amount_diff_company"
+                    type="measure"
+                    string="Untaxed Amount"
+                />
             </pivot>
         </field>
     </record>
-
     <record id="sale_order_amount_history_search" model="ir.ui.view">
         <field name="name">sale.order.amount.history.search</field>
         <field name="model">sale.order.amount.history</field>
         <field name="arch" type="xml">
             <search string="Amount History">
-                <field name="order_id"/>
-                <field name="partner_id"/>
-                <field name="history_type"/>
-                <separator/>
-                <filter name="month" string="Date" date="date"/>
-                <filter string="Past 3 Months" name="3months" domain="[('date','&gt;=',(context_today()-relativedelta(months=3,day=1)).strftime('%Y-%m-%d'))]"/>
-                <filter string="Past 12 Months" name="12months" domain="[('date','&gt;=',(context_today()-relativedelta(months=12,day=1)).strftime('%Y-%m-%d'))]"/>
+                <field name="order_id" />
+                <field name="partner_id" />
+                <field name="history_type" />
+                <separator />
+                <filter name="month" string="Date" date="date" />
+                <filter
+                    string="Past 3 Months"
+                    name="3months"
+                    domain="[('date','&gt;=',(context_today()-relativedelta(months=3,day=1)).strftime('%Y-%m-%d'))]"
+                />
+                <filter
+                    string="Past 12 Months"
+                    name="12months"
+                    domain="[('date','&gt;=',(context_today()-relativedelta(months=12,day=1)).strftime('%Y-%m-%d'))]"
+                />
                 <group expand="0" string="Group By">
-                    <filter string="Order" name="groupby_order" domain="[]" context="{'group_by':'order_id'}" />
-                    <filter string="Date" name="groupby_date" domain="[]" context="{'group_by':'date'}" />
+                    <filter
+                        string="Order"
+                        name="groupby_order"
+                        domain="[]"
+                        context="{'group_by':'order_id'}"
+                    />
+                    <filter
+                        string="Date"
+                        name="groupby_date"
+                        domain="[]"
+                        context="{'group_by':'date'}"
+                    />
                 </group>
             </search>
         </field>

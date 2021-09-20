@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    is_internal = fields.Boolean(related="fiscal_position_id.for_group_companies", store=True)
     amount_history_ids = fields.One2many("sale.order.amount.history", "order_id", string="Amount History")
 
     def _get_order_count(self, type, amount_diff):
@@ -40,12 +41,16 @@ class SaleOrder(models.Model):
 
     def write(self, vals):
         for order in self:
+            if order.is_internal:
+                continue
             if order.state in ("draft", "sent") and vals.get("state") in ("sale", "done"):
                 order._create_history_vals("add", order.amount_untaxed)
             elif order.state in ("sale", "done") and vals.get("state") == "cancel":
                 order._create_history_vals("delete", -order.amount_untaxed)
         res = super().write(vals)
         for order in self:
+            if order.is_internal:
+                continue
             if order.state in ("sale", "done"):
                 history_rec = self.env["sale.order.amount.history"].search(
                     [

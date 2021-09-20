@@ -12,6 +12,7 @@
     "post_init_hook": "post_init_hook",
     "data": [
         "security/ir.model.access.csv",
+        "views/account_fiscal_position_views.xml",
         "views/sale_order_amount_history_views.xml",
         "views/sale_order_views.xml",
     ],

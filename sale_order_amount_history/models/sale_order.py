@@ -32,12 +32,15 @@ class SaleOrder(models.Model):
         vals = {
             "history_type": type,
             "order_id": self.id,
+            # We pass the currency here instead of making the field a related field in
+            # sale.order.amount.history in case the currency is changed in the sales
+            # order after history is logged.
             "currency_id": self.currency_id.id,
             "order_count": self._get_order_count(type, amount_diff),
             "amount": self.amount_untaxed if type in ("add", "change") else 0.0,
             "amount_diff": amount_diff,
         }
-        self.env["sale.order.amount.history"].create(vals)
+        self.env["sale.order.amount.history"].sudo().create(vals)
 
     def write(self, vals):
         for order in self:

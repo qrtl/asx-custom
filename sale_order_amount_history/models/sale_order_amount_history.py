@@ -38,6 +38,7 @@ class SaleOrderAmountHistory(models.Model):
 
     @api.depends(
         "order_id",
+        "order_id.confirmation_date",
         "amount",
         "amount_diff",
         "currency_id",
@@ -47,6 +48,8 @@ class SaleOrderAmountHistory(models.Model):
     def _compute_amount_company(self):
         for rec in self:
             order = rec.order_id
+            if not order.confirmation_date:
+                continue
             rate_date = fields.Date.to_date(
                 fields.Datetime.context_timestamp(rec, order.confirmation_date)
             )

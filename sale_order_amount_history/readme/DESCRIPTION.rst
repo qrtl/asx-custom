@@ -25,7 +25,7 @@ to zero.  Below are the patterns.
 * Sales order with non-zero amount is confirmed.  -> 1
 * Sales order with zero amount is confirmed.  -> 0
 * Amount is changed from non-zero to non-zero for a confirmed sales order.  -> 0
-* Amount is changed from zero to non-zero for a confirmed sales order.  -> 1 
-* Amount is changed from non-zero to zero for a confirmed sales order.  -> -1 
+* Amount is changed from zero to non-zero for a confirmed sales order.  -> 1
+* Amount is changed from non-zero to zero for a confirmed sales order.  -> -1
 * Conirmed sales order with non-zero amount is cancelled.  -> -1
 * Conirmed sales order with zero amount is cancelled.  -> 0

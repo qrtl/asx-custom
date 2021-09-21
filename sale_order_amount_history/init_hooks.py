@@ -7,10 +7,9 @@ from odoo.api import Environment
 
 def post_init_hook(cr, registry):
     env = Environment(cr, SUPERUSER_ID, {})
-    orders = env["sale.order"].search([])
-    for order in orders:
-        if order.state not in ("sale", "done") or order.amount_untaxed == 0.0:
-            continue
+    for order in env["sale.order"].search(
+        [("state", "in", ("sale", "done")), ("amount_untaxed", "!=", 0.0)]
+    ):
         date_conf = fields.Date.to_date(
             fields.Datetime.context_timestamp(order, order.confirmation_date)
         )

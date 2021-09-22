@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_amount_history_salesman,sale.order.amount.history.salesman,model_sale_order_amount_history,sales_team.group_sale_salesman,1,0,0,0
+access_sale_order_amount_history_system,sale.order.amount.history.system,model_sale_order_amount_history,base.group_system,1,1,1,1

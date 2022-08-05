@@ -4,8 +4,12 @@
 from odoo import fields, models
 
 
-class AccountInvoice(models.Model):
+class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
 
     industry_id = fields.Many2one(
-    related="invoice_id.partner_id.industry_id", string="Industry", readonly=True,store=True)
+        related="invoice_id.partner_id.industry_id",
+        string="Industry",
+        readonly=True,
+        store=True,
+    )

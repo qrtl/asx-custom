@@ -10,5 +10,5 @@
     "license": "LGPL-3",
     "installable": True,
     "depends": ["sale"],
-    "data": [],
+    "data": ["report/sale_report_views.xml"],
 }

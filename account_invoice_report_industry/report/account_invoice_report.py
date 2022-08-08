@@ -21,13 +21,13 @@ class AccountInvoiceReport(models.Model):
     def _sub_select(self):
         select_str = super()._sub_select()
         select_str += """
-            , ail.industry_id AS industry_id
+            , coalesce(partner.industry_id, partner_ai.industry_id) AS industry_id
             """
         return select_str
 
     def _group_by(self):
         _group_by = super()._group_by()
         _group_by += """
-            , ail.industry_id
+            , coalesce(partner.industry_id, partner_ai.industry_id)
             """
         return _group_by

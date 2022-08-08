@@ -10,5 +10,5 @@
     "license": "LGPL-3",
     "installable": True,
     "depends": ["account"],
-    "data": [],
+    "data": ["report/account_invoice_report.xml"],
 }

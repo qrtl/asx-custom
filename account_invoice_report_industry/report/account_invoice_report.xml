@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_account_invoice_report_search" model="ir.ui.view">
         <field name="name">account.invoice.report.search</field>
@@ -9,7 +9,11 @@
                 <field name="industry_id" />
             </xpath>
             <xpath expr="//filter[@name='category_product']" position="after">
-                <filter string="Industry" name="industry_id" context="{'group_by':'industry_id','residual_invisible':True}"/>
+                <filter
+                    string="Industry"
+                    name="industry_id"
+                    context="{'group_by':'industry_id','residual_invisible':True}"
+                />
             </xpath>
         </field>
     </record>

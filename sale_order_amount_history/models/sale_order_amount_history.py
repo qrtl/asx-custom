@@ -17,6 +17,9 @@ class SaleOrderAmountHistory(models.Model):
     )
     order_count = fields.Integer()
     currency_id = fields.Many2one("res.currency")
+    industry_id = fields.Many2one(
+        related="partner_id.commercial_partner_id.industry_id", store=True
+    )
     company_id = fields.Many2one(related="order_id.company_id", store=True)
     company_currency_id = fields.Many2one(
         related="company_id.currency_id", string="Company Currency", store=True

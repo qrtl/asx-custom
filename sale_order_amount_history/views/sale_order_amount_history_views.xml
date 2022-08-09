@@ -75,6 +75,7 @@
                 <field name="order_id" />
                 <field name="partner_id" />
                 <field name="history_type" />
+                <field name="industry_id" />
                 <separator />
                 <filter name="month" string="Date" date="date" />
                 <filter
@@ -99,6 +100,12 @@
                         name="groupby_date"
                         domain="[]"
                         context="{'group_by':'date'}"
+                    />
+                    <filter
+                        string="Industry"
+                        name="industry_id"
+                        domain="[]"
+                        context="{'group_by':'industry_id'}"
                     />
                 </group>
             </search>

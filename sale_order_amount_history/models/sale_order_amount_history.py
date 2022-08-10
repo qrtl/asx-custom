@@ -18,7 +18,7 @@ class SaleOrderAmountHistory(models.Model):
     order_count = fields.Integer()
     currency_id = fields.Many2one("res.currency")
     industry_id = fields.Many2one(
-        related="partner_id.commercial_partner_id.industry_id", store=True
+        "res.partner.industry", compute="_compute_industry_id", store=True
     )
     company_id = fields.Many2one(related="order_id.company_id", store=True)
     company_currency_id = fields.Many2one(
@@ -62,3 +62,11 @@ class SaleOrderAmountHistory(models.Model):
             rec.amount_diff_company = rec.currency_id._convert(
                 rec.amount_diff, rec.company_currency_id, rec.company_id, rate_date
             )
+
+    @api.depends("partner_id")
+    def _compute_industry_id(self):
+        for rec in self:
+            if rec.partner_id.commercial_partner_id.industry_id:
+                rec.industry_id = rec.partner_id.commercial_partner_id.industry_id
+            else:
+                rec.industry_id = rec.partner_id.industry_id

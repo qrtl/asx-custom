@@ -23,7 +23,7 @@
         <field name="inherit_id" ref="sale.view_order_product_pivot" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='team_id']" position="after">
-                <field name="industry_id" type="col" />
+                <field name="categ_id" type="col" />
             </xpath>
         </field>
     </record>

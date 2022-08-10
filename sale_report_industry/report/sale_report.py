@@ -14,7 +14,9 @@ class SaleReport(models.Model):
     def _query(self, with_clause="", fields=None, groupby="", from_clause=""):
         if fields is None:
             fields = {}
-        fields["industry_id"] = ", coalesce(partner.industry_id, partner_s.industry_id) AS industry_id"
-        from_clause += " join res_partner partner_s on partner.commercial_partner_id = partner_s.id"
+        fields[
+            "industry_id"
+        ] = ", coalesce(partner.industry_id, partner_s.industry_id) AS industry_id"
+        from_clause += " join res_partner partner_s on partner.commercial_partner_id = partner_s.id"  # noqa
         groupby += ", coalesce(partner.industry_id, partner_s.industry_id)"
         return super(SaleReport, self)._query(with_clause, fields, groupby, from_clause)

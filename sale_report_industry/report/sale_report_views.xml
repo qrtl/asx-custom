@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_product_search" model="ir.ui.view">
+        <field name="name">sale.report.search</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="industry_id" />
+            </xpath>
+            <xpath expr="//filter[@name='Category']" position="after">
+                <filter
+                    string="Industry"
+                    name="industry_id"
+                    context="{'group_by':'industry_id','residual_invisible':True}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_order_product_pivot" model="ir.ui.view">
+        <field name="name">sale.report.pivot</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_pivot" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="categ_id" type="col" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

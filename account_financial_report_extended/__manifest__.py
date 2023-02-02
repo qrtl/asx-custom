@@ -6,7 +6,7 @@
     "summary": "",
     "category": "Stock",
     "author": "Quartile Limited",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "license": "AGPL-3",
     "depends": ["account_financial_report"],
     "data": ["wizard/general_ledger_wizard_view.xml"],

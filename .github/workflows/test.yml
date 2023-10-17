@@ -13,7 +13,7 @@ jobs:
   #   runs-on: ubuntu-latest
   #   name: Detect unreleased dependencies
   #   steps:
-  #     - uses: actions/checkout@v2
+  #     - uses: actions/checkout@v3
   #     - run: |
   #         for reqfile in requirements.txt test-requirements.txt ; do
   #             if [ -f ${reqfile} ] ; then
@@ -36,6 +36,7 @@ jobs:
         include:
           - container: ghcr.io/oca/oca-ci/py3.6-ocb12.0:latest
             name: test with OCB
+            makepot: "false"
     services:
       postgres:
         image: postgres:9.6
@@ -46,7 +47,7 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
       - name: Install addons and dependencies

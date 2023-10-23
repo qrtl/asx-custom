@@ -11,7 +11,6 @@ class ProductTemplate(models.Model):
     standard_price = fields.Float(track_visibility='onchange')
     update_cost = fields.Boolean()
 
-
     def write(self, vals):
         if "standard_price" in vals:
             if not vals.get('update_cost', self.update_cost):
@@ -24,9 +23,9 @@ class ProductTemplate(models.Model):
                         "set in the 'Purchase' TAB. This value should not be "
                         "modified unless there are very unusual circumstances. "
                         "In such a situation, please set the 'Update Cost' "
-                        "field to 'True' and save the record again. Additionally, please make sure "
-                        "to write a detailed 'Log' below of what you are changing "
-                        "(from what to what) and why."
+                        "field to 'True' and save the record again. Additionally, "
+                        "please make sure to write a detailed 'Log' below "
+                        "of what you are changing (from what to what) and why."
                     )
                 )
         vals['update_cost'] = False

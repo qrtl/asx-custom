@@ -369,20 +369,24 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external" href="https://github.com/qrtl/asx-custom/tree/12.0/product_standard_price_restriction"><img alt="qrtl/asx-custom" src="https://img.shields.io/badge/github-qrtl%2Fasx--custom-lightgray.png?logo=github" /></a></p>
 <p>This module restricts the updating of standard price for products to only those users
-in the group_product_manager group.</p>
+in the group_system group.</p>
+<div class="section" id="background">
+<h1>Background</h1>
+<p>For products that use either the FIFO or Average Cost costing method, users might misunderstand
+that the “standard_price” field represents the unit cost calculated by Odoo based on the current
+stock valuation, rather than the product cost/price that will be applied when creating a purchase order.
+There is a possibility that users may update the “standard_price” with the product price obtained from
+the vendor’s pricelist. If this occurs, the stock valuation of the product will be unexpectedly updated,
+and the value will not accurately reflect the actual valuation.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#bug-tracker" id="id1">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="id2">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="id3">Authors</a></li>
-<li><a class="reference internal" href="#maintainers" id="id4">Maintainers</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#credits" id="id2">Credits</a></li>
 </ul>
 </div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#id1">Bug Tracker</a></h1>
+<h2><a class="toc-backref" href="#id1">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/qrtl/asx-custom/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
@@ -390,18 +394,19 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#id2">Credits</a></h1>
+<h2><a class="toc-backref" href="#id2">Credits</a></h2>
+</div>
+</div>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#id3">Authors</a></h2>
+<h1>Authors</h1>
 <ul class="simple">
 <li>Quartile Limited</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#id4">Maintainers</a></h2>
+<h1>Maintainers</h1>
 <p>This module is part of the <a class="reference external" href="https://github.com/qrtl/asx-custom/tree/12.0/product_standard_price_restriction">qrtl/asx-custom</a> project on GitHub.</p>
 <p>You are welcome to contribute.</p>
-</div>
 </div>
 </div>
 </body>

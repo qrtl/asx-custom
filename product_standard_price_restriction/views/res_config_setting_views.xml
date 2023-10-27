@@ -17,14 +17,14 @@
                     <div class="o_setting_left_pane" />
                     <div class="o_setting_right_pane">
                         <label
-                            for="product_standard_price_restriction"
+                            for="product_standard_price_warning_msg"
                             string="Product Standard Price Restriction"
                         />
                         <div class="text-muted">
-                            Error message for product standard price restriction
+                            Set warning message for product standard price restriction
                         </div>
                         <div class="text-muted">
-                            <field name="product_standard_price_restriction" />
+                            <field name="product_standard_price_warning_msg" />
                         </div>
                     </div>
                 </div>

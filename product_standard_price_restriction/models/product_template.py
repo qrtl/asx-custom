@@ -15,6 +15,6 @@ class ProductTemplate(models.Model):
     def write(self, vals):
         if "standard_price" in vals:
             if not vals.get('update_cost', self.update_cost):
-                raise UserError(_(self.company_id.product_standard_price_restriction))
+                raise UserError(_(self.company_id.product_standard_price_warning_msg))
         vals['update_cost'] = False
         return super(ProductTemplate, self).write(vals)

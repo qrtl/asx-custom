@@ -28,6 +28,18 @@ class SaleOrder(models.Model):
             self.shipping_use_carrier_acct = False
 
     @api.multi
+    def action_confirm(self):
+        res = super(SaleOrder, self).action_confirm()
+        for order in self:
+            for pick in order.picking_ids:
+                pick.write({
+                    'carrier_id': order.carrier_id.id,
+                    'delivery_carrier_service_id': order.delivery_carrier_service_id.id,
+                    'shipping_use_carrier_acct': order.shipping_use_carrier_acct,
+                })
+        return res
+
+    @api.multi
     def write(self, vals):
         res = super(SaleOrder, self).write(vals)
         if "carrier_id" in vals:

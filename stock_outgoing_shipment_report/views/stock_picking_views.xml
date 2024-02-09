@@ -6,8 +6,8 @@
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='carrier_id']" position="after">
-                <field name="delivery_carrier_service_id"/>
-                <field name="shipping_use_carrier_acct"/>
+                <field name="delivery_carrier_service_id" attrs="{'readonly':[('state','in',('done','cancel'))]}" />
+                <field name="shipping_use_carrier_acct" attrs="{'readonly':[('state','in',('done','cancel'))]}" />
             </xpath>
         </field>
     </record>

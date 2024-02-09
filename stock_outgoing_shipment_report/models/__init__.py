@@ -1,3 +1,4 @@
+from . import carrier_info_mixin
 from . import delivery_carrier_account
 from . import delivery_carrier_service
 from . import delivery_carrier

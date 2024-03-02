@@ -1,39 +1,54 @@
-# Copyright 2019 Quartile Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2019-2024 Quartile Limited
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import api, models
 
 
 class SaleOrder(models.Model):
-    _inherit = "sale.order"
+    _name = "sale.order"
+    _inherit = ["sale.order", "carrier.info.mixin"]
 
-    shipping_insurance_amt = fields.Float(
-        "Shipping Insurance Amount", help="For information only."
-    )
-    delivery_carrier_service_id = fields.Many2one(
-        "delivery.carrier.service", string="Delivery Service",
-    )
-    shipping_use_carrier_acct = fields.Char(string="Delivery Carrier Account Number",)
+    @api.multi
+    def _get_partner_shipping(self):
+        self.ensure_one()
+        return self.partner_shipping_id
 
-    @api.onchange("carrier_id")
-    def _onchange_carrier_id(self):
-        account_ids = self.partner_shipping_id.delivery_carrier_account_ids
-        if self.carrier_id and account_ids.filtered(
-            lambda l: l.carrier_id == self.carrier_id
-        ):
-            self.shipping_use_carrier_acct = account_ids.filtered(
-                lambda l: l.carrier_id == self.carrier_id
-            ).delivery_carrier_account_num
-        else:
-            self.shipping_use_carrier_acct = False
+    @api.onchange("partner_shipping_id")
+    def _onchange_partner_shipping_id(self):
+        self._onchange_carrier_id()
+        return super()._onchange_partner_shipping_id()
+
+    @api.multi
+    def action_confirm(self):
+        res = super().action_confirm()
+        for order in self:
+            order.picking_ids.write(
+                {
+                    "carrier_id": order.carrier_id.id,
+                    "delivery_carrier_service_id": order.delivery_carrier_service_id.id,
+                    "shipping_use_carrier_acct": order.shipping_use_carrier_acct,
+                }
+            )
+        return res
 
     @api.multi
     def write(self, vals):
-        res = super(SaleOrder, self).write(vals)
-        if "carrier_id" in vals:
-            for order in self:
-                pickings = order.mapped("picking_ids").filtered(
-                    lambda p: p.state not in ("done", "cancel")
-                )
-                pickings.update({"carrier_id": vals["carrier_id"]})
+        res = super().write(vals)
+        if not any(
+            key in vals for key in [
+                "carrier_id", "delivery_carrier_service_id", "shipping_use_carrier_acct"
+            ]
+        ):
+            return res
+        for order in self:
+            pickings = order.mapped("picking_ids").filtered(
+                lambda p: p.state not in ("done", "cancel")
+            )
+            pickings.write(
+                {
+                    "carrier_id": order.carrier_id.id,
+                    "delivery_carrier_service_id": order.delivery_carrier_service_id.id,
+                    "shipping_use_carrier_acct": order.shipping_use_carrier_acct,
+                }
+            )
         return res

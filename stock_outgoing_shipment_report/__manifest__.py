@@ -1,9 +1,9 @@
-# Copyright 2019-2021 Quartile Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2019-2024 Quartile Limited
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Stock Outgoing Shipment Report",
     "summary": "",
-    "version": "12.0.1.1.1",
+    "version": "12.0.1.2.1",
     "category": "Stock",
     "website": "https://www.quartile.co",
     "author": "Quartile Limited",
@@ -19,5 +19,6 @@
         "views/res_partner_views.xml",
         "views/sale_order_views.xml",
         "views/stock_outgoing_shipment_report_views.xml",
+        "views/stock_picking_views.xml",
     ],
 }

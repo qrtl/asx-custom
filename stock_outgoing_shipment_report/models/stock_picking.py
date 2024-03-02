@@ -1,30 +1,35 @@
-# Copyright 2019-2021 Quartile Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2019-2024 Quartile Limited
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 
 
 class StockPicking(models.Model):
-    _inherit = "stock.picking"
+    _name = "stock.picking"
+    _inherit = ["stock.picking", "carrier.info.mixin"]
+
+    @api.multi
+    def _get_partner_shipping(self):
+        self.ensure_one()
+        return self.partner_id
+
+    @api.onchange("partner_id")
+    def onchange_partner_id(self):
+        self._onchange_carrier_id()
+        return super().onchange_partner_id()
 
     @api.multi
     def generate_stock_outgoing_shipment_report(self):
         moves = self.mapped("move_lines")
         self._cr.execute("DELETE FROM stock_outgoing_shipment_report")
         for move in moves:
-            order = move.sale_line_id.order_id if move.sale_line_id else False
             picking = move.picking_id
             partner = move.picking_partner_id
             product = move.product_id
             vals = {"move_id": move.id}
-            if order:
-                carrier = order.carrier_id
-                vals["carrier_id"] = carrier.id if carrier else False
-                vals["ship_service_id"] = (
-                    order.delivery_carrier_service_id
-                    and order.delivery_carrier_service_id.id
-                )
-                vals["ship_account"] = order.shipping_use_carrier_acct
+            vals["carrier_id"] = picking.carrier_id.id or False
+            vals["ship_service_id"] = picking.delivery_carrier_service_id.id or False
+            vals["ship_account"] = picking.shipping_use_carrier_acct
             vals["ship_date_edit"] = fields.Datetime.context_timestamp(
                 self, picking.scheduled_date
             ).date()
@@ -40,9 +45,7 @@ class StockPicking(models.Model):
                 vals["ship_to_country"] = partner.country_id and partner.country_id.code
                 vals["ship_to_zip"] = partner.zip
                 vals["ship_to_phone"] = partner.phone
-            vals["order_notes"] = (
-                product.product_tmpl_id.delivery_report_desc or product.name[:40]
-            )
+            vals["order_notes"] = product.delivery_report_desc or product.name[:40]
             self.env["stock.outgoing.shipment.report"].create(vals)
         return self.env.ref(
             "stock_outgoing_shipment_report.action_stock_outgoing_shipment_report"
